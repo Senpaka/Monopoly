@@ -25,10 +25,10 @@ public class ReceiveMoneyEvent implements StaticEvent {
         return "Получи" + this.amount + "денег";
     }
 
-    @Override
-    public Cell getSourceCell() {
-        return this.cell;
-    }
+//    @Override
+//    public Cell getSourceCell() {
+//        return this.cell;
+//    }
 
     @Override
     public SpecialEffect getEffect() {

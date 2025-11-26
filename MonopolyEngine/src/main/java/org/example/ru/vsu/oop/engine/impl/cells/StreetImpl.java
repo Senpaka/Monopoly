@@ -23,11 +23,10 @@ public class StreetImpl implements Street {
     private int houses = 0;
     private boolean hasHotel = false;
 
-    public StreetImpl(String name, String description, int position, CellType cellType, int price, int housePrice, int hotelPrice, int baseRent, ColorGroup colorGroup) {
+    public StreetImpl(String name, String description, int position, int price, int housePrice, int hotelPrice, int baseRent, ColorGroup colorGroup) {
         this.name = name;
         this.description = description;
         this.position = position;
-        this.cellType = cellType;
         this.price = price;
         this.housePrice = housePrice;
         this.hotelPrice = hotelPrice;

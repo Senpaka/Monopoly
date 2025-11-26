@@ -13,12 +13,12 @@ public class GameStateImpl implements GameState {
     private List<Player> players;
     private int currentPlayerIndex;
     private Board board;
-    private Queue<RandomEvent> randomEvents;
+//    private Queue<RandomEvent> randomEvents;
 
-    public GameStateImpl(List<Player> players, Board board, Queue<RandomEvent> randomEvents) {
+    public GameStateImpl(List<Player> players, Board board) { //, Queue<RandomEvent> randomEvents
         this.players = players;
         this.board = board;
-        this.randomEvents = randomEvents;
+        //this.randomEvents = randomEvents;
     }
 
     @Override
@@ -41,10 +41,10 @@ public class GameStateImpl implements GameState {
         return board;
     }
 
-    @Override
-    public RandomEvent drawRandomEvent() {
-        RandomEvent event = randomEvents.poll();
-        randomEvents.offer(event);
-        return event;
-    }
+//    @Override
+//    public RandomEvent drawRandomEvent() {
+//        RandomEvent event = randomEvents.poll();
+//        randomEvents.offer(event);
+//        return event;
+//    }
 }

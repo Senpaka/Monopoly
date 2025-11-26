@@ -12,6 +12,6 @@ public interface GameState {
     void nextTurn();
     List<Player> getPlayers();
     Board getBoard();
-    RandomEvent drawRandomEvent();
+    //RandomEvent drawRandomEvent();
 
 }

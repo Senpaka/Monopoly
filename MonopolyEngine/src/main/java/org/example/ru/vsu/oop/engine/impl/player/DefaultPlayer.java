@@ -58,8 +58,8 @@ public class DefaultPlayer implements Player {
     }
 
     @Override
-    public boolean spendMoney(int amount) {
-        return this.balance >= amount;
+    public int spendMoney(int amount) {
+        return this.balance -= amount;
     }
 
     @Override

@@ -8,11 +8,9 @@ import org.example.ru.vsu.oop.engine.model.enumObject.event.SpecialEffect;
 
 public class PayMoneyEvent implements StaticEvent {
     private final int amount;
-    private final Cell cell;
 
-    public PayMoneyEvent(int amount, Cell cell) {
+    public PayMoneyEvent(int amount) {
         this.amount = amount;
-        this.cell = cell;
     }
 
     @Override
@@ -23,11 +21,6 @@ public class PayMoneyEvent implements StaticEvent {
     @Override
     public String getDescription() {
         return "Заплати в казну " + this.amount + "денег";
-    }
-
-    @Override
-    public Cell getSourceCell() {
-        return this.cell;
     }
 
     @Override

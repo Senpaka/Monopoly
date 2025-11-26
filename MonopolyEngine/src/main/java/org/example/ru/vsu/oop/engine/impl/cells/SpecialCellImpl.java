@@ -26,11 +26,6 @@ public class SpecialCellImpl implements SpecialCell {
     }
 
     @Override
-    public SpecialEffect getEffect() {
-        return event.getEffect();
-    }
-
-    @Override
     public void applyEffect(Player player, GameEngine gameEngine) {
         event.apply(player, gameEngine);
     }
@@ -49,8 +44,6 @@ public class SpecialCellImpl implements SpecialCell {
     public CellType getCellType() {
         return cellType;
     }
-
-
 
     @Override
     public void onLand(Player player, GameEngine gameEngine) {

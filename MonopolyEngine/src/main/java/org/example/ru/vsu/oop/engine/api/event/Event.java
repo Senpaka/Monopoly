@@ -7,4 +7,5 @@ import org.example.ru.vsu.oop.engine.model.enumObject.event.SpecialEffect;
 public interface Event {
     void apply(Player player, GameEngine gameEngine);
     String getDescription();
+
 }

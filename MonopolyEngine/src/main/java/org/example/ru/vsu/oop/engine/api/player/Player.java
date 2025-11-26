@@ -14,6 +14,6 @@ public interface Player {
     int getPosition();
 
     void addMoney(int amount);
-    boolean spendMoney(int amount);
+    int spendMoney(int amount);
     int getBalance();
 }

@@ -23,10 +23,10 @@ public abstract class MoveEvent implements StaticEvent {
         player.setPosition(this.targetPosition);
     }
 
-    @Override
-    public Cell getSourceCell() {
-        return this.cell;
-    }
+//    @Override
+//    public Cell getSourceCell() {
+//        return this.cell;
+//    }
     @Override
     public SpecialEffect getEffect(){
         return this.specialEffect;
