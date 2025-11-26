@@ -5,8 +5,8 @@ public enum SpecialEffect {
     RECEIVE_MONEY,
     GO_TO_JAIL,
     GO_TO_START,
-    SKIP_TURN,
-    MOVE_TO_CELL,
-    MOVE_BACK,
-    BONUS_ROLL,
+//    SKIP_TURN,
+//    MOVE_TO_CELL,
+//    MOVE_BACK,
+//    BONUS_ROLL,
 }
