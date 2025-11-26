@@ -7,6 +7,9 @@ import org.example.ru.vsu.oop.engine.model.enumObject.board.CellType;
 import org.example.ru.vsu.oop.engine.model.enumObject.event.RandomEventType;
 
 public class RandomEventImpl implements RandomEvent {
+    /*
+    Класс для рандомных ивентов с карточками (возможно будет удален)
+     */
 
     private String name;
     private String description;

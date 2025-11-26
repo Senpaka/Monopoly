@@ -7,6 +7,9 @@ import org.example.ru.vsu.oop.engine.api.player.Player;
 import org.example.ru.vsu.oop.engine.model.enumObject.event.SpecialEffect;
 
 public class PayMoneyEvent implements StaticEvent {
+    /*
+    Реализация ивента траты денег в казну
+     */
     private final int amount;
 
     public PayMoneyEvent(int amount) {

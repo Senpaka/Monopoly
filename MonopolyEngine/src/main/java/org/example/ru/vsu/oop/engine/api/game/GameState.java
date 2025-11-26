@@ -7,7 +7,9 @@ import org.example.ru.vsu.oop.engine.impl.board.Board;
 import java.util.List;
 
 public interface GameState {
-
+    /*
+    Интерфейс состояния игры
+     */
     Player getCurrentPlayer();
     void nextTurn();
     List<Player> getPlayers();

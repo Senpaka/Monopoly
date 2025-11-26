@@ -5,5 +5,8 @@ import org.example.ru.vsu.oop.engine.api.player.Player;
 import org.example.ru.vsu.oop.engine.model.enumObject.event.SpecialEffect;
 
 public interface SpecialCell extends Cell{
+    /*
+    Интерфейс для клеток с событиями
+     */
     void applyEffect(Player player, GameEngine gameEngine);
 }

@@ -4,7 +4,9 @@ import org.example.ru.vsu.oop.engine.api.cell.Cell;
 import org.example.ru.vsu.oop.engine.model.enumObject.event.SpecialEffect;
 
 public class GoToStartEvent extends MoveEvent {
-
+    /*
+    Перемещает игрока на стартовую клетку
+     */
     public GoToStartEvent(Cell cell) {
         super(cell, SpecialEffect.GO_TO_START, 0);
     }

@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.Queue;
 
 public class GameStateImpl implements GameState {
-
+    /*
+    Класс хранящий состояние игры
+     */
     private List<Player> players;
     private int currentPlayerIndex;
     private Board board;
@@ -23,21 +25,33 @@ public class GameStateImpl implements GameState {
 
     @Override
     public Player getCurrentPlayer() {
+        /*
+        Возвращает игрока у которого сейчас ход
+         */
         return players.get(currentPlayerIndex);
     }
 
     @Override
     public void nextTurn() {
+        /*
+        Меняет ход на следущего игрока
+         */
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
     }
 
     @Override
     public List<Player> getPlayers() {
+        /*
+        Возвращает список игроков
+         */
         return players;
     }
 
     @Override
     public Board getBoard() {
+        /*
+        Возвращает игровое поле
+         */
         return board;
     }
 

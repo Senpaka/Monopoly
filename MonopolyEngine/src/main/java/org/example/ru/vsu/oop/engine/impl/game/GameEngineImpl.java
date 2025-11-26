@@ -8,7 +8,9 @@ import org.example.ru.vsu.oop.engine.impl.player.DefaultPlayer;
 import org.example.ru.vsu.oop.engine.utils.DicePair;
 
 public class GameEngineImpl implements GameEngine {
-
+    /*
+    Класс игрового движка
+     */
     GameState gameState;
     private boolean gameOver = false;
     DicePair dicePair;
@@ -20,6 +22,9 @@ public class GameEngineImpl implements GameEngine {
 
     @Override
     public void startGame() {
+        /*
+        Начало игры
+         */
         System.out.println("Игра началась");
         while (!gameOver){
             performTurn();
@@ -30,6 +35,9 @@ public class GameEngineImpl implements GameEngine {
 
     @Override
     public void performTurn() {
+        /*
+        Выполнение хода
+         */
         Player player = gameState.getCurrentPlayer();
         System.out.println("Ход игрока " + player.getName());
 
@@ -54,6 +62,9 @@ public class GameEngineImpl implements GameEngine {
 
     @Override
     public void movePlayer(Player player, int steps) {
+        /*
+        передвижение игрока
+         */
         int newPos = (player.getPosition() + steps) % gameState.getBoard().getSize();
         player.setPosition(newPos);
         System.out.println(player.getName() + "Перемещается на позицию" + newPos);
@@ -65,6 +76,9 @@ public class GameEngineImpl implements GameEngine {
 
     @Override
     public boolean isGameOver() {
+        /*
+        проверка на проигрыш
+         */
         for (Player player: gameState.getPlayers()){
             if (player.getBalance() < 0){
                 return true;
@@ -75,6 +89,9 @@ public class GameEngineImpl implements GameEngine {
 
     @Override
     public Player getWinner() {
+        /*
+        получение победителя
+         */
         Player winner = null;
         int maxMoney = -1;
         for (Player player: gameState.getPlayers()){

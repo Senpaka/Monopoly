@@ -1,6 +1,9 @@
 package org.example.ru.vsu.oop.engine.model.enumObject.event;
 
 public enum SpecialEffect {
+    /*
+    Особые события на клетках
+     */
     PAY_MONEY,
     RECEIVE_MONEY,
     GO_TO_JAIL,

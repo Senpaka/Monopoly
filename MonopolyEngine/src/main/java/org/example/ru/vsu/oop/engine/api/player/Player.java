@@ -5,6 +5,9 @@ import org.example.ru.vsu.oop.engine.api.cell.Street;
 import java.util.List;
 
 public interface Player {
+    /*
+    Интерфейс игрока
+     */
     String getName();
 
     List<Street> getStreets();

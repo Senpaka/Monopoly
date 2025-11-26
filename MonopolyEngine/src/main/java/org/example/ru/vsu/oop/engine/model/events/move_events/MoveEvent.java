@@ -7,6 +7,9 @@ import org.example.ru.vsu.oop.engine.api.player.Player;
 import org.example.ru.vsu.oop.engine.model.enumObject.event.SpecialEffect;
 
 public abstract class MoveEvent implements StaticEvent {
+    /*
+    Абстрактный класс для любых событий связанных с перемещением игрока на клетку
+     */
     protected Cell cell;
     protected int targetPosition;
 

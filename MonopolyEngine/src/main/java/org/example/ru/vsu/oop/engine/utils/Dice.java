@@ -1,6 +1,9 @@
 package org.example.ru.vsu.oop.engine.utils;
 
 public class Dice {
+    /*
+    Класс кубика
+     */
     public int sides;
 
     public Dice(){
@@ -13,6 +16,9 @@ public class Dice {
     }
 
     public int roll(){
+        /*
+        Возвращает выпавшее число очков
+         */
         return (int)(Math.random() * sides) + 1;
     }
 

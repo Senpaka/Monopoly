@@ -5,6 +5,9 @@ import org.example.ru.vsu.oop.engine.api.player.Player;
 import org.example.ru.vsu.oop.engine.model.enumObject.board.CellType;
 
 public interface Cell {
+    /*
+    Интерфейс клетки
+     */
     String getName();
     String getDescription();
 

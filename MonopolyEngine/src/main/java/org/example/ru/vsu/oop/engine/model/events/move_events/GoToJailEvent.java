@@ -4,6 +4,9 @@ import org.example.ru.vsu.oop.engine.api.cell.Cell;
 import org.example.ru.vsu.oop.engine.model.enumObject.event.SpecialEffect;
 
 public class GoToJailEvent extends MoveEvent {
+    /*
+    Перемещает игрока в тюрьму
+     */
 
     public GoToJailEvent(Cell cell) {
         super(cell, SpecialEffect.GO_TO_JAIL, 10);

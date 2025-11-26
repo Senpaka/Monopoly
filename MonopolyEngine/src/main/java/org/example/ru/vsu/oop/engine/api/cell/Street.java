@@ -4,6 +4,9 @@ import org.example.ru.vsu.oop.engine.api.player.Player;
 import org.example.ru.vsu.oop.engine.model.enumObject.board.ColorGroup;
 
 public interface Street extends Cell{
+    /*
+    Интерфейс для клеток с улицами
+     */
     int getPrice();
     int getSellPrice();
 

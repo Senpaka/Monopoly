@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultPlayer implements Player {
-
+    /*
+    Класс игрока
+     */
     final String name;
     int position;
     int balance;
@@ -29,41 +31,65 @@ public class DefaultPlayer implements Player {
 
     @Override
     public String getName() {
+        /*
+        Возвращает имя игрока
+         */
         return this.name;
     }
 
     @Override
     public List<Street> getStreets() {
+        /*
+        Возвращает список улиц, которыми владеет игрок
+         */
         return this.streets;
     }
 
     @Override
     public void move(int steps) {
+        /*
+        Передвигает игрока на steps шагов
+         */
         this.position += steps;
     }
 
     @Override
     public void setPosition(int position) {
+        /*
+        перемещает игрока на указанную позицию
+         */
         this.position = position;
     }
 
     @Override
     public int getPosition() {
+        /*
+        возвращает позицию игрока
+         */
         return this.position;
     }
 
     @Override
     public void addMoney(int amount) {
+        /*
+        Добавляет деньги
+         */
         this.balance += amount;
     }
 
     @Override
     public int spendMoney(int amount) {
+        /*
+        Удаляет деньги
+         */
         return this.balance -= amount;
     }
 
     @Override
     public int getBalance() {
+        /*
+        Возвращает баланс игрока
+         */
         return this.balance;
     }
 }
