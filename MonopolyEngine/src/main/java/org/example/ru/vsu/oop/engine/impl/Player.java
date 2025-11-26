@@ -1,8 +1,8 @@
-package org.example.ru.vsu.oop.engine.model;
+package org.example.ru.vsu.oop.engine.impl;
 
 import java.util.List;
 
-public class Player implements org.example.ru.vsu.oop.engine.api.Player {
+public class Player implements org.example.ru.vsu.oop.engine.api.player.Player {
 
     final String name;
     int position;
