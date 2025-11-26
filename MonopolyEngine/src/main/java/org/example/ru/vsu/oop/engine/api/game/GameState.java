@@ -1,4 +1,16 @@
 package org.example.ru.vsu.oop.engine.api.game;
 
+import org.example.ru.vsu.oop.engine.api.event.RandomEvent;
+import org.example.ru.vsu.oop.engine.api.player.Player;
+
+import java.util.List;
+
 public interface GameState {
+
+    Player getCurrentPlayer();
+    void nextTurn();
+    List<Player> getPlayers();
+    Board getBoard();
+    RandomEvent drawRandomEvent();
+
 }
