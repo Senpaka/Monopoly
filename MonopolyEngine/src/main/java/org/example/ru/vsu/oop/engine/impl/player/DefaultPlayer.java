@@ -1,22 +1,26 @@
-package org.example.ru.vsu.oop.engine.impl;
+package org.example.ru.vsu.oop.engine.impl.player;
 
+import org.example.ru.vsu.oop.engine.api.cell.Street;
+import org.example.ru.vsu.oop.engine.api.player.Player;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class Player implements org.example.ru.vsu.oop.engine.api.player.Player {
+public class DefaultPlayer implements Player {
 
     final String name;
     int position;
     int balance;
     List<Street> streets;
 
-    public Player(String name) {
+    public DefaultPlayer(String name) {
         this.name = name;
         this.position = 0;
-        this.streets = new List<Street>();
+        this.streets = new ArrayList<Street>();
         this.balance = 2500;
     }
 
-    public Player(String name, int position, int balance, List<Street> streets) {
+    public DefaultPlayer(String name, int position, int balance, List<Street> streets) {
         this.name = name;
         this.position = position;
         this.balance = balance;
@@ -25,31 +29,41 @@ public class Player implements org.example.ru.vsu.oop.engine.api.player.Player {
 
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     @Override
-    public void setPosition(int steps) {
-        position += steps;
+    public List<Street> getStreets() {
+        return this.streets;
+    }
+
+    @Override
+    public void move(int steps) {
+        this.position += steps;
+    }
+
+    @Override
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     @Override
     public int getPosition() {
-        return position;
+        return this.position;
     }
 
     @Override
-    public void getMoney(int money) {
-        this.balance += money;
+    public void addMoney(int amount) {
+        this.balance += amount;
     }
 
     @Override
-    public void takeMoney(int cost) {
-        this.balance -= cost;
+    public boolean spendMoney(int amount) {
+        return this.balance >= amount;
     }
 
     @Override
     public int getBalance() {
-        return balance;
+        return this.balance;
     }
 }
