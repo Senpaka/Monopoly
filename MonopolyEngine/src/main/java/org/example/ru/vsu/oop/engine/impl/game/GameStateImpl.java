@@ -3,6 +3,7 @@ package org.example.ru.vsu.oop.engine.impl.game;
 import org.example.ru.vsu.oop.engine.api.event.RandomEvent;
 import org.example.ru.vsu.oop.engine.api.game.GameState;
 import org.example.ru.vsu.oop.engine.api.player.Player;
+import org.example.ru.vsu.oop.engine.impl.board.Board;
 
 import java.util.List;
 import java.util.Queue;
