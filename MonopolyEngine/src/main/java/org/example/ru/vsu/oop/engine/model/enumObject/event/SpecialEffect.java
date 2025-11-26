@@ -1,4 +1,4 @@
-package org.example.ru.vsu.oop.engine.model.event;
+package org.example.ru.vsu.oop.engine.model.enumObject.event;
 
 public enum SpecialEffect {
     PAY_MONEY,
