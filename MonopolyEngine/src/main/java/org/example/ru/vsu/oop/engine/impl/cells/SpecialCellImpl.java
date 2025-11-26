@@ -74,6 +74,8 @@ public class SpecialCellImpl implements SpecialCell {
         return cellType;
     }
 
+
+
     @Override
     public int getPosition() {
         /*
