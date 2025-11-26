@@ -11,11 +11,11 @@ public class ReceiveMoneyEvent implements StaticEvent {
     Реализация ивента получения денег
      */
     private final int amount;
-    private final Cell cell;
+    //private final Cell cell;
 
-    public ReceiveMoneyEvent(int amount, Cell cell) {
+    public ReceiveMoneyEvent(int amount) { //, Cell cell
         this.amount = amount;
-        this.cell = cell;
+        //this.cell = cell;
     }
 
     @Override

@@ -11,6 +11,7 @@ public interface Player {
     String getName();
 
     List<Street> getStreets();
+    void addStreet(Street street);
 
     void move(int steps);
     void setPosition(int position);

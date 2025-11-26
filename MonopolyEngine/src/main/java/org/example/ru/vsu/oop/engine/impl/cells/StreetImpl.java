@@ -98,9 +98,9 @@ public class StreetImpl implements Street {
         /*
         Добовляет дом, если домов меньше 4, иначе добовляет отель
          */
-        if (!this.hasHotel && this.houses < 4){
+        if (this.owner != null && !this.hasHotel && this.houses < 4){
             this.houses += 1;
-        } else if (!this.hasHotel && this.houses == 4){
+        } else if (this.owner != null && !this.hasHotel && this.houses == 4){
             addHotel();
         }
     }
@@ -110,8 +110,10 @@ public class StreetImpl implements Street {
         /*
         Добавляет отель и удаляет дома
          */
-        this.hasHotel = true;
-        this.houses = 0;
+        if (this.owner != null && this.houses == 4){
+            this.hasHotel = true;
+            this.houses = 0;
+        }
     }
 
     @Override
@@ -143,7 +145,7 @@ public class StreetImpl implements Street {
         /*
         Возвращает пересчитаннцю ренту (с учетом домов и отелей)
          */
-        if (this.hasHotel) return this.baseRent * 5;
+        if (this.hasHotel) return this.baseRent + (5 * this.baseRent);
         return this.baseRent + (this.houses * this.baseRent);
     }
 

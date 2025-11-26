@@ -38,6 +38,12 @@ public class DefaultPlayer implements Player {
     }
 
     @Override
+    public void addStreet(Street street){
+        streets.add(street);
+        street.setOwner(this);
+    }
+
+    @Override
     public List<Street> getStreets() {
         /*
         Возвращает список улиц, которыми владеет игрок
