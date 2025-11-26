@@ -2,6 +2,8 @@ package org.example.ru.vsu.oop.engine.api.player;
 
 import org.example.ru.vsu.oop.engine.api.cell.Street;
 
+import java.util.List;
+
 public interface Player {
     String getName();
 
