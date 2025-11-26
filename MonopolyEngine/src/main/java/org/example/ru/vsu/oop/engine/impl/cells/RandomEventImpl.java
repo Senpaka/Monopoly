@@ -30,8 +30,8 @@ public class RandomEventImpl implements RandomEvent {
     }
 
     @Override
-    public void apply(Player player, GameEngine engine) {
-        event.apply(player, engine);
+    public void apply(Player player, GameEngine gameEngine) {
+        event.apply(player, gameEngine);
     }
 
     @Override

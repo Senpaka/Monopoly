@@ -7,5 +7,5 @@ import org.example.ru.vsu.oop.engine.model.enumObject.event.SpecialEffect;
 public interface SpecialCell extends Cell{
     SpecialEffect getEffect();
 
-    void applyEffect(Player player, GameEngine engine);
+    void applyEffect(Player player, GameEngine gameEngine);
 }

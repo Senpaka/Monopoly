@@ -1,6 +1,7 @@
 package org.example.ru.vsu.oop.engine.impl.cells;
 
 import org.example.ru.vsu.oop.engine.api.cell.SpecialCell;
+import org.example.ru.vsu.oop.engine.api.event.Event;
 import org.example.ru.vsu.oop.engine.api.event.StaticEvent;
 import org.example.ru.vsu.oop.engine.api.game.GameEngine;
 import org.example.ru.vsu.oop.engine.api.player.Player;
@@ -14,9 +15,10 @@ public class SpecialCellImpl implements SpecialCell {
     private int position;
     private CellType cellType = CellType.STATIC_EVENT;
 
-    private StaticEvent event;
+    //Изменил на Event
+    private Event event;
 
-    public SpecialCellImpl(String name, String description, int position, StaticEvent event) {
+    public SpecialCellImpl(String name, String description, int position, Event event) {
         this.name = name;
         this.description = description;
         this.position = position;
@@ -29,8 +31,8 @@ public class SpecialCellImpl implements SpecialCell {
     }
 
     @Override
-    public void applyEffect(Player player, GameEngine engine) {
-        event.apply(player, engine);
+    public void applyEffect(Player player, GameEngine gameEngine) {
+        event.apply(player, gameEngine);
     }
 
     @Override
@@ -51,12 +53,12 @@ public class SpecialCellImpl implements SpecialCell {
 
 
     @Override
-    public void onLand(Player player, GameEngine engine) {
-        applyEffect(player, engine);
+    public void onLand(Player player, GameEngine gameEngine) {
+        applyEffect(player, gameEngine);
     }
 
     @Override
-    public void onPass(Player player, GameEngine engine) {
+    public void onPass(Player player, GameEngine gameEngine) {
 
     }
 

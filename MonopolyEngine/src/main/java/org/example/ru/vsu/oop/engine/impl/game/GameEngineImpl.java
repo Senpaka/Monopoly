@@ -1,28 +1,58 @@
 package org.example.ru.vsu.oop.engine.impl.game;
 
+import org.example.ru.vsu.oop.engine.api.cell.Cell;
 import org.example.ru.vsu.oop.engine.api.game.GameEngine;
+import org.example.ru.vsu.oop.engine.api.game.GameState;
 import org.example.ru.vsu.oop.engine.api.player.Player;
 import org.example.ru.vsu.oop.engine.impl.player.DefaultPlayer;
+import org.example.ru.vsu.oop.engine.utils.DicePair;
 
 public class GameEngineImpl implements GameEngine {
+
+    GameState gameState;
+    private boolean gameOver = false;
+    DicePair dicePair;
+
+    public GameEngineImpl(GameState gameState) {
+        this.gameState = gameState;
+        this.dicePair = new DicePair();
+    }
+
     @Override
     public void startGame() {
-
+        System.out.println("Игра началась");
+        while (!gameOver){
+            performTurn();
+        }
+        Player winner = getWinner();
+        System.out.println("Победитель " + winner.getName());
     }
 
     @Override
     public void performTurn() {
+        Player player = gameState.getCurrentPlayer();
+        System.out.println("Ход игрока " + player.getName());
 
-    }
+        int dice = dicePair.roll();
+        System.out.println(player.getName() + "Бросает кубики и получает" + dice);
 
-    @Override
-    public void rollDice() {
+        movePlayer(player, dice);
 
+        Cell cell = gameState.getBoard().getCell(player.getPosition());
+        System.out.println(player.getName() + "Встал на клетку" + cell.getName());
+        cell.onLand(player, this);
+        cell.onPass(player, this);
+
+        gameOver = isGameOver();
+
+        gameState.nextTurn();
     }
 
     @Override
     public void movePlayer(Player player, int steps) {
-        player.move(steps);
+        int newPos = (player.getPosition() + steps) % gameState.getBoard().getSize();
+        player.move(newPos);
+        System.out.println(player.getName() + "Перемещается на позицию" + newPos);
     }
 
     @Override

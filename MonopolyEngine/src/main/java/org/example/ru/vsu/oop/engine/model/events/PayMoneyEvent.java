@@ -16,7 +16,7 @@ public class PayMoneyEvent implements StaticEvent {
     }
 
     @Override
-    public void apply(Player player, GameEngine engine) {
+    public void apply(Player player, GameEngine gameEngine) {
         player.spendMoney(this.amount);
     }
 

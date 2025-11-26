@@ -10,8 +10,8 @@ public interface Cell {
 
     CellType getCellType();
 
-    void onLand(Player player, GameEngine engine);
-    void onPass(Player player, GameEngine engine);
+    void onLand(Player player, GameEngine gameEngine);
+    void onPass(Player player, GameEngine gameEngine);
 
     int getPosition();
     void setPosition(int position);

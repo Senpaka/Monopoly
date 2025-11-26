@@ -131,7 +131,7 @@ public class StreetImpl implements Street {
     }
 
     @Override
-    public void onLand(Player player, GameEngine engine) {
+    public void onLand(Player player, GameEngine gameEngine) {
         if (owner != null && player != owner){
             int rent = getRentPrice();
             player.spendMoney(rent);
@@ -141,7 +141,7 @@ public class StreetImpl implements Street {
     }
 
     @Override
-    public void onPass(Player player, GameEngine engine) {
+    public void onPass(Player player, GameEngine gameEngine) {
 
     }
 
