@@ -3,6 +3,7 @@ package org.example.ru.vsu.oop.engine.impl.cells;
 import org.example.ru.vsu.oop.engine.api.event.RandomEvent;
 import org.example.ru.vsu.oop.engine.api.game.GameEngine;
 import org.example.ru.vsu.oop.engine.api.player.Player;
+import org.example.ru.vsu.oop.engine.model.enumObject.board.CellType;
 import org.example.ru.vsu.oop.engine.model.enumObject.event.RandomEventType;
 
 public class RandomEventImpl implements RandomEvent {
@@ -10,6 +11,7 @@ public class RandomEventImpl implements RandomEvent {
     private String name;
     private String description;
     private int position;
+    private CellType cellType = CellType.RANDOM_EVENT;
 
     private RandomEventType eventType;
     private RandomEvent event;

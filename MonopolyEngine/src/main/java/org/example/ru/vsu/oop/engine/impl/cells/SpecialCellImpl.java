@@ -12,7 +12,7 @@ public class SpecialCellImpl implements SpecialCell {
     private String name;
     private String description;
     private int position;
-    private CellType cellType = CellType.RANDOM_EVENT;
+    private CellType cellType = CellType.STATIC_EVENT;
 
     private StaticEvent event;
 
@@ -47,6 +47,8 @@ public class SpecialCellImpl implements SpecialCell {
     public CellType getCellType() {
         return cellType;
     }
+
+
 
     @Override
     public void onLand(Player player, GameEngine engine) {
