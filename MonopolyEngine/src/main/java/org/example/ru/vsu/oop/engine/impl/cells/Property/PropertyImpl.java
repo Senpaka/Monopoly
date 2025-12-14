@@ -12,16 +12,14 @@ public abstract class PropertyImpl implements Property {
     private int position;
 
     protected final int price;
-    protected final int baseRent;
 
     protected Player owner;
 
-    public PropertyImpl(String name, String description, int position, int price, int baseRent) {
+    public PropertyImpl(String name, String description, int position, int price) {
         this.name = name;
         this.description = description;
         this.position = position;
         this.price = price;
-        this.baseRent = baseRent;
     }
 
     @Override
@@ -59,14 +57,6 @@ public abstract class PropertyImpl implements Property {
         Устанавливает владельца улицы
          */
         this.owner = player;
-    }
-
-    @Override
-    public int getBaseRent() {
-        /*
-        Возвращает базовую ренту
-         */
-        return this.baseRent;
     }
 
     @Override

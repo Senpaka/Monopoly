@@ -17,4 +17,6 @@ public interface Street extends Property{
 
     int getHousePrice();
     int getHotelPrice();
+
+    int getBaseRent();
 }

@@ -11,7 +11,6 @@ public interface Property extends Cell{
     void setOwner(Player player);
     boolean hasOwner();
 
-    int getBaseRent();
     int getRentPrice();
 
     void sellToBank();

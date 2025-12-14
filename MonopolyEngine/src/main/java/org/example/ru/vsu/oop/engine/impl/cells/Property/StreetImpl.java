@@ -18,13 +18,16 @@ public class StreetImpl extends PropertyImpl implements Street {
     private int houses = 0;
     private boolean hasHotel = false;
 
+    private int baseRent;
+
     private final int HOTEL_MULTIPLIER = 5;
 
     public StreetImpl(String name, String description, int position, int price, int housePrice, int hotelPrice, int baseRent, ColorGroup colorGroup) {
-        super(name, description, position, price, baseRent);
+        super(name, description, position, price);
         this.housePrice = housePrice;
         this.hotelPrice = hotelPrice;
         this.colorGroup = colorGroup;
+        this.baseRent = baseRent;
     }
 
     @Override
@@ -91,12 +94,17 @@ public class StreetImpl extends PropertyImpl implements Street {
     }
 
     @Override
+    public int getBaseRent() {
+        return this.baseRent;
+    }
+
+    @Override
     public int getRentPrice() {
         /*
         Возвращает пересчитаннцю ренту (с учетом домов и отелей)
          */
-        if (this.hasHotel) return super.baseRent + (this.HOTEL_MULTIPLIER * super.baseRent);
-        return super.baseRent + (this.houses * super.baseRent);
+        if (this.hasHotel) return this.baseRent + (this.HOTEL_MULTIPLIER * this.baseRent);
+        return this.baseRent + (this.houses * this.baseRent);
     }
 
     @Override

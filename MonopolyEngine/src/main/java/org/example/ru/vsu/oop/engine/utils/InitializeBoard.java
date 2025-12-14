@@ -1,6 +1,8 @@
 package org.example.ru.vsu.oop.engine.utils;
 
 import org.example.ru.vsu.oop.engine.api.cell.Cell;
+import org.example.ru.vsu.oop.engine.impl.cells.Property.RailwayImpl;
+import org.example.ru.vsu.oop.engine.impl.cells.Property.UtilitiesImpl;
 import org.example.ru.vsu.oop.engine.impl.cells.SpecialCellImpl;
 import org.example.ru.vsu.oop.engine.impl.cells.Property.StreetImpl;
 import org.example.ru.vsu.oop.engine.model.enumObject.board.ColorGroup;
@@ -24,40 +26,45 @@ public class InitializeBoard {
         // Специальные клетки
         cells.set(0, new SpecialCellImpl("Старт", "Получите 200$ при прохождении", 0,
                 new ReceiveMoneyEvent(200)));
-        cells.set(2, new SpecialCellImpl("Общественная казна", "Взять карту из колоды", 2,
-                null));
+
         cells.set(4, new SpecialCellImpl("Налог на доход", "Заплатите 200$", 4,
                 new PayMoneyEvent(200)));
-        cells.set(5, new SpecialCellImpl("Южная Железная Дорога", "Железнодорожная станция", 5,
-                null));
-        cells.set(7, new SpecialCellImpl("Шанс", "Взять карту из колоды", 7,
-                null));
+
         cells.set(10, new SpecialCellImpl("Тюрьма/Просто посетите", "Тюрьма", 10,
                 new NoEffectEvent()));
-        cells.set(12, new SpecialCellImpl("Электрическая Компания", "Коммунальное предприятие", 12,
-                null));
-        cells.set(15, new SpecialCellImpl("Пенсильванская Железная Дорога", "Железнодорожная станция", 15,
-                null));
-        cells.set(17, new SpecialCellImpl("Общественная казна", "Взять карту из колоды", 17,
-                null));
+
         cells.set(20, new SpecialCellImpl("Бесплатная Парковка", "Отдых без оплаты", 20,
                 new NoEffectEvent()));
-        cells.set(22, new SpecialCellImpl("Шанс", "Взять карту из колоды", 22,
-                null));
-        cells.set(25, new SpecialCellImpl("Бродвейская Железная Дорога", "Железнодорожная станция", 25,
-                null));
-        cells.set(28, new SpecialCellImpl("Водопроводная Компания", "Коммунальное предприятие", 28,
-                null));
+
         cells.set(30, new SpecialCellImpl("Отправляйтесь в тюрьму", "Переместитесь в тюрьму", 30,
                 new GoToJailEvent()));
+
+        cells.set(38, new SpecialCellImpl("Налог на роскошь", "Заплатите 100$", 38,
+                new PayMoneyEvent(100)));
+
+        // Карты
         cells.set(33, new SpecialCellImpl("Общественная казна", "Взять карту из колоды", 33,
-                null));
-        cells.set(35, new SpecialCellImpl("Западная Железная Дорога", "Железнодорожная станция", 35,
                 null));
         cells.set(36, new SpecialCellImpl("Шанс", "Взять карту из колоды", 36,
                 null));
-        cells.set(38, new SpecialCellImpl("Налог на роскошь", "Заплатите 100$", 38,
-                new PayMoneyEvent(100)));
+        cells.set(22, new SpecialCellImpl("Шанс", "Взять карту из колоды", 22,
+                null));
+        cells.set(17, new SpecialCellImpl("Общественная казна", "Взять карту из колоды", 17,
+                null));
+        cells.set(7, new SpecialCellImpl("Шанс", "Взять карту из колоды", 7,
+                null));
+        cells.set(2, new SpecialCellImpl("Общественная казна", "Взять карту из колоды", 2,
+                null));
+
+        // Железные дороги
+        cells.set(5, new RailwayImpl("Южная Железная Дорога", "Железнодорожная станция", 5, 200, 50));
+        cells.set(25, new RailwayImpl("Бродвейская Железная Дорога", "Железнодорожная станция", 25, 200, 50));
+        cells.set(35, new RailwayImpl("Западная Железная Дорога", "Железнодорожная станция", 35, 200, 50));
+        cells.set(15, new RailwayImpl("Пенсильванская Железная Дорога", "Железнодорожная станция", 15, 200, 50));
+
+        // Комунальные услуги
+        cells.set(12, new UtilitiesImpl("Электрическая Компания", "Коммунальное предприятие", 12, 250));
+        cells.set(28, new UtilitiesImpl("Водопроводная Компания", "Коммунальное предприятие", 28, 250));
 
         // Улицы коричневой группы
         cells.set(1, new StreetImpl("Средиземноморский Проспект", "Коричневая группа", 1,

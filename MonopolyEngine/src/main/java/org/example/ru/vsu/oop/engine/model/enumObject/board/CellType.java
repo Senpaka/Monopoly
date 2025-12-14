@@ -6,6 +6,7 @@ public enum CellType {
      */
     STREET,
     RAILWAY,
+    UTILITIES,
     SPECIAL_CELL,
     RANDOM_EVENT
 }
