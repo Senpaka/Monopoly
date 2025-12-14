@@ -1,6 +1,5 @@
-package org.example.ru.vsu.oop.engine.model.events;
+package org.example.ru.vsu.oop.engine.model.events.staticEvents;
 
-import org.example.ru.vsu.oop.engine.api.cell.Cell;
 import org.example.ru.vsu.oop.engine.api.event.StaticEvent;
 import org.example.ru.vsu.oop.engine.api.game.GameEngine;
 import org.example.ru.vsu.oop.engine.api.player.Player;

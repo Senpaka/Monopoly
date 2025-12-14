@@ -1,7 +1,9 @@
 package org.example.ru.vsu.oop.engine.impl.player;
 
+import org.example.ru.vsu.oop.engine.api.cell.Property;
 import org.example.ru.vsu.oop.engine.api.cell.Street;
 import org.example.ru.vsu.oop.engine.api.player.Player;
+import org.example.ru.vsu.oop.engine.model.enumObject.board.CellType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,20 +15,33 @@ public class DefaultPlayer implements Player {
     final String name;
     int position;
     int balance;
-    List<Street> streets;
+    List<Property> streets;
 
     public DefaultPlayer(String name) {
         this.name = name;
         this.position = 0;
-        this.streets = new ArrayList<Street>();
+        this.streets = new ArrayList<Property>();
         this.balance = 2500;
     }
 
-    public DefaultPlayer(String name, int position, int balance, List<Street> streets) {
+    public DefaultPlayer(String name, int position, int balance, List<Property> streets) {
         this.name = name;
         this.position = position;
         this.balance = balance;
         this.streets = streets;
+    }
+
+    @Override
+    public int getCountPropertyType(CellType cellType){
+        int count = 0;
+
+        for (int i = 0; i < streets.size(); i++) {
+            if (this.streets.get(i).getCellType() == cellType){
+                count += 1;
+            }
+        }
+
+        return count;
     }
 
     @Override
@@ -44,7 +59,7 @@ public class DefaultPlayer implements Player {
     }
 
     @Override
-    public List<Street> getStreets() {
+    public List<Property> getStreets() {
         /*
         Возвращает список улиц, которыми владеет игрок
          */

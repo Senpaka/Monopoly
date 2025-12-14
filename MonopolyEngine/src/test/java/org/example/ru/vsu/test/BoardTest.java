@@ -3,10 +3,10 @@ package org.example.ru.vsu.test;
 import org.example.ru.vsu.oop.engine.api.cell.Cell;
 import org.example.ru.vsu.oop.engine.impl.board.Board;
 import org.example.ru.vsu.oop.engine.impl.cells.SpecialCellImpl;
-import org.example.ru.vsu.oop.engine.impl.cells.StreetImpl;
+import org.example.ru.vsu.oop.engine.impl.cells.Property.StreetImpl;
 import org.example.ru.vsu.oop.engine.model.enumObject.board.ColorGroup;
-import org.example.ru.vsu.oop.engine.model.events.PayMoneyEvent;
-import org.example.ru.vsu.oop.engine.model.events.ReceiveMoneyEvent;
+import org.example.ru.vsu.oop.engine.model.events.staticEvents.PayMoneyEvent;
+import org.example.ru.vsu.oop.engine.model.events.staticEvents.ReceiveMoneyEvent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

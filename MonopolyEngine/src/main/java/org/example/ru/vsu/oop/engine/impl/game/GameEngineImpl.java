@@ -50,8 +50,8 @@ public class GameEngineImpl implements GameEngine {
         System.out.println(player.getName() + " Встал на клетку " + cell.getName());
         System.out.println("Она " + cell.getDescription());
 
-        cell.onLand(player, this);
         cell.onPass(player, this);
+        cell.onLand(player, this);
 
         System.out.println("Баланс " + player.getBalance());
 
@@ -72,6 +72,16 @@ public class GameEngineImpl implements GameEngine {
 
     @Override
     public void processEvent() {
+    }
+
+    @Override
+    public void sendPlayerTo(Player player, int position) {
+        player.setPosition(position);
+    }
+
+    @Override
+    public void addMessage(String massage) {
+        System.out.println(massage);
     }
 
     @Override

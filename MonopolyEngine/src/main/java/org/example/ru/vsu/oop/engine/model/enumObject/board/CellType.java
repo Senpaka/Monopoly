@@ -5,6 +5,7 @@ public enum CellType {
     Типы клеток
      */
     STREET,
-    STATIC_EVENT,
+    RAILWAY,
+    SPECIAL_CELL,
     RANDOM_EVENT
 }

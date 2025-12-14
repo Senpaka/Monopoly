@@ -6,7 +6,7 @@ import org.example.ru.vsu.oop.engine.impl.board.Board;
 import org.example.ru.vsu.oop.engine.impl.cells.SpecialCellImpl;
 import org.example.ru.vsu.oop.engine.impl.game.GameStateImpl;
 import org.example.ru.vsu.oop.engine.impl.player.DefaultPlayer;
-import org.example.ru.vsu.oop.engine.model.events.ReceiveMoneyEvent;
+import org.example.ru.vsu.oop.engine.model.events.staticEvents.ReceiveMoneyEvent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

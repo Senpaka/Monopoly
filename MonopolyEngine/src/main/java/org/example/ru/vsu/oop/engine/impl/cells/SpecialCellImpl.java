@@ -2,12 +2,9 @@ package org.example.ru.vsu.oop.engine.impl.cells;
 
 import org.example.ru.vsu.oop.engine.api.cell.SpecialCell;
 import org.example.ru.vsu.oop.engine.api.event.Event;
-import org.example.ru.vsu.oop.engine.api.event.StaticEvent;
 import org.example.ru.vsu.oop.engine.api.game.GameEngine;
 import org.example.ru.vsu.oop.engine.api.player.Player;
 import org.example.ru.vsu.oop.engine.model.enumObject.board.CellType;
-import org.example.ru.vsu.oop.engine.model.enumObject.event.RandomEventType;
-import org.example.ru.vsu.oop.engine.model.enumObject.event.SpecialEffect;
 
 public class SpecialCellImpl implements SpecialCell {
     /*
@@ -16,7 +13,7 @@ public class SpecialCellImpl implements SpecialCell {
     private String name;
     private String description;
     private int position;
-    private CellType cellType = CellType.STATIC_EVENT;
+    private CellType cellType = CellType.SPECIAL_CELL;
 
     //Изменил на Event
     private Event event;

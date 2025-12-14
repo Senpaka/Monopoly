@@ -10,6 +10,8 @@ public interface GameEngine {
     void performTurn();
     void movePlayer(Player player, int steps);
     void processEvent();
+    void sendPlayerTo(Player player, int position);
+    void addMessage(String massage);
     boolean isGameOver();
     Player getWinner();
 }

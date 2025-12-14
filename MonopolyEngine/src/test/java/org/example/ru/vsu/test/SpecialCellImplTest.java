@@ -32,7 +32,7 @@ public class SpecialCellImplTest {
         assertEquals("Тестовая клетка", specialCell.getName());
         assertEquals("Описание клетки", specialCell.getDescription());
         assertEquals(10, specialCell.getPosition());
-        assertEquals(CellType.STATIC_EVENT, specialCell.getCellType());
+        assertEquals(CellType.SPECIAL_CELL, specialCell.getCellType());
     }
 
     @Test
