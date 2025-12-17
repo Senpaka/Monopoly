@@ -1,35 +1,23 @@
-package org.example.ru.vsu.oop.engine.impl.cells;
+package org.example.ru.vsu.oop.engine.impl.cells.eventCell;
 
-import org.example.ru.vsu.oop.engine.api.cell.SpecialCell;
 import org.example.ru.vsu.oop.engine.api.event.Event;
 import org.example.ru.vsu.oop.engine.api.game.GameEngine;
 import org.example.ru.vsu.oop.engine.api.player.Player;
 import org.example.ru.vsu.oop.engine.model.enumObject.board.CellType;
 
-public class SpecialCellImpl implements SpecialCell {
+public class SpecialCellImpl extends EventCellImpl{
     /*
     Класс для особых клеток с событиями
      */
-    private String name;
-    private String description;
-    private int position;
-    private CellType cellType = CellType.SPECIAL_CELL;
 
-    //Изменил на Event
-    private Event event;
+    protected Event event;
 
     public SpecialCellImpl(String name, String description, int position, Event event) {
-        this.name = name;
-        this.description = description;
-        this.position = position;
+        super(name, description, position);
         this.event = event;
     }
 
-    @Override
     public void applyEffect(Player player, GameEngine gameEngine) {
-        /*
-        Применения события
-         */
         event.apply(player, gameEngine);
     }
 
@@ -43,24 +31,6 @@ public class SpecialCellImpl implements SpecialCell {
 
     @Override
     public void onPass(Player player, GameEngine gameEngine) {
-
-    }
-
-
-    @Override
-    public String getName() {
-        /*
-        Возвращает название события
-         */
-        return name;
-    }
-
-    @Override
-    public String getDescription() {
-        /*
-        Возвращает описание события
-         */
-        return description;
     }
 
     @Override
@@ -68,22 +38,7 @@ public class SpecialCellImpl implements SpecialCell {
         /*
         Возвращает тип клетки
          */
-        return cellType;
+        return CellType.SPECIAL_CELL;
     }
 
-    @Override
-    public int getPosition() {
-        /*
-        Возвращает позицию
-         */
-        return position;
-    }
-
-    @Override
-    public void setPosition(int position) {
-        /*
-        Устанавливает позицию
-         */
-        this.position = position;
-    }
 }
