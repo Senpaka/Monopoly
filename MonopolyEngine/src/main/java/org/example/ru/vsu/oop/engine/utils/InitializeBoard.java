@@ -1,17 +1,24 @@
 package org.example.ru.vsu.oop.engine.utils;
 
 import org.example.ru.vsu.oop.engine.api.cell.Cell;
-import org.example.ru.vsu.oop.engine.impl.cells.Property.RailwayImpl;
-import org.example.ru.vsu.oop.engine.impl.cells.Property.UtilitiesImpl;
-import org.example.ru.vsu.oop.engine.impl.cells.SpecialCellImpl;
-import org.example.ru.vsu.oop.engine.impl.cells.Property.StreetImpl;
+import org.example.ru.vsu.oop.engine.api.event.RandomEvent;
+import org.example.ru.vsu.oop.engine.impl.cells.eventCell.CardCellImpl;
+import org.example.ru.vsu.oop.engine.impl.cells.property.RailwayImpl;
+import org.example.ru.vsu.oop.engine.impl.cells.property.UtilitiesImpl;
+import org.example.ru.vsu.oop.engine.impl.cells.eventCell.SpecialCellImpl;
+import org.example.ru.vsu.oop.engine.impl.cells.property.StreetImpl;
+import org.example.ru.vsu.oop.engine.model.enumObject.board.CellType;
 import org.example.ru.vsu.oop.engine.model.enumObject.board.ColorGroup;
+import org.example.ru.vsu.oop.engine.model.events.chance.GoToNCellChanceCard;
+import org.example.ru.vsu.oop.engine.model.events.communityChest.BirthdayComCard;
 import org.example.ru.vsu.oop.engine.model.events.staticEvents.GoToJailEvent;
 import org.example.ru.vsu.oop.engine.model.events.staticEvents.NoEffectEvent;
 import org.example.ru.vsu.oop.engine.model.events.staticEvents.PayMoneyEvent;
 import org.example.ru.vsu.oop.engine.model.events.staticEvents.ReceiveMoneyEvent;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 public class InitializeBoard {
@@ -43,18 +50,18 @@ public class InitializeBoard {
                 new PayMoneyEvent(100)));
 
         // Карты
-        cells.set(33, new SpecialCellImpl("Общественная казна", "Взять карту из колоды", 33,
-                null));
-        cells.set(36, new SpecialCellImpl("Шанс", "Взять карту из колоды", 36,
-                null));
-        cells.set(22, new SpecialCellImpl("Шанс", "Взять карту из колоды", 22,
-                null));
-        cells.set(17, new SpecialCellImpl("Общественная казна", "Взять карту из колоды", 17,
-                null));
-        cells.set(7, new SpecialCellImpl("Шанс", "Взять карту из колоды", 7,
-                null));
-        cells.set(2, new SpecialCellImpl("Общественная казна", "Взять карту из колоды", 2,
-                null));
+        cells.set(33, new CardCellImpl("Общественная казна", "Взять карту из колоды", 33,
+                CellType.COMMUNITY));
+        cells.set(36, new CardCellImpl("Шанс", "Взять карту из колоды", 36,
+                CellType.CHANCE));
+        cells.set(22, new CardCellImpl("Шанс", "Взять карту из колоды", 22,
+                CellType.CHANCE));
+        cells.set(17, new CardCellImpl("Общественная казна", "Взять карту из колоды", 17,
+                CellType.COMMUNITY));
+        cells.set(7, new CardCellImpl("Шанс", "Взять карту из колоды", 7,
+                CellType.CHANCE));
+        cells.set(2, new CardCellImpl("Общественная казна", "Взять карту из колоды", 2,
+                CellType.COMMUNITY));
 
         // Железные дороги
         cells.set(5, new RailwayImpl("Южная Железная Дорога", "Железнодорожная станция", 5, 200, 50));

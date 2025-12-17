@@ -4,7 +4,6 @@ import org.example.ru.vsu.oop.engine.api.event.RandomEvent;
 import org.example.ru.vsu.oop.engine.api.game.GameEngine;
 import org.example.ru.vsu.oop.engine.api.player.Player;
 import org.example.ru.vsu.oop.engine.model.enumObject.board.CellType;
-import org.example.ru.vsu.oop.engine.model.enumObject.event.RandomEventType;
 
 public class RandomEventImpl implements RandomEvent {
     /*
@@ -14,12 +13,12 @@ public class RandomEventImpl implements RandomEvent {
     private String name;
     private String description;
     private int position;
-    private CellType cellType = CellType.RANDOM_EVENT;
+    private CellType cellType = CellType.CHANCE;
 
-    private RandomEventType eventType;
+    private CellType eventType;
     private RandomEvent event;
 
-    public RandomEventImpl(String name, String description, int position, RandomEventType eventType, RandomEvent event) {
+    public RandomEventImpl(String name, String description, int position, CellType eventType, RandomEvent event) {
         this.name = name;
         this.description = description;
         this.position = position;
@@ -28,7 +27,7 @@ public class RandomEventImpl implements RandomEvent {
     }
 
     @Override
-    public RandomEventType getType() {
+    public CellType getType() {
         return eventType;
     }
 
@@ -50,7 +49,7 @@ public class RandomEventImpl implements RandomEvent {
         return position;
     }
 
-    public RandomEventType getEventType() {
+    public CellType getEventType() {
         return eventType;
     }
 

@@ -1,6 +1,9 @@
 package org.example.ru.vsu.oop.engine.api.game;
 
+import org.example.ru.vsu.oop.engine.api.event.RandomEvent;
 import org.example.ru.vsu.oop.engine.api.player.Player;
+
+import java.util.List;
 
 public interface GameEngine {
     /*
@@ -14,4 +17,7 @@ public interface GameEngine {
     void addMessage(String massage);
     boolean isGameOver();
     Player getWinner();
+    List<Player> getPlayers();
+    RandomEvent drawChance();
+    RandomEvent drawCommunity();
 }

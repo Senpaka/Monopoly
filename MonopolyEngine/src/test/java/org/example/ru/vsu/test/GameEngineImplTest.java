@@ -5,8 +5,8 @@ import org.example.ru.vsu.oop.engine.api.game.GameEngine;
 import org.example.ru.vsu.oop.engine.api.game.GameState;
 import org.example.ru.vsu.oop.engine.api.player.Player;
 import org.example.ru.vsu.oop.engine.impl.board.Board;
-import org.example.ru.vsu.oop.engine.impl.cells.SpecialCellImpl;
-import org.example.ru.vsu.oop.engine.impl.cells.Property.StreetImpl;
+import org.example.ru.vsu.oop.engine.impl.cells.eventCell.SpecialCellImpl;
+import org.example.ru.vsu.oop.engine.impl.cells.property.StreetImpl;
 import org.example.ru.vsu.oop.engine.impl.game.GameEngineImpl;
 import org.example.ru.vsu.oop.engine.impl.game.GameStateImpl;
 import org.example.ru.vsu.oop.engine.impl.player.DefaultPlayer;
@@ -18,6 +18,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,10 +38,10 @@ public class GameEngineImplTest {
         );
         board = new Board(cells);
 
-        List<Player> players = Arrays.asList(
+        ArrayList<Player> players = new ArrayList<>( Arrays.asList(
                 new DefaultPlayer("Игрок 1"),
                 new DefaultPlayer("Игрок 2")
-        );
+        ));
 
         gameState = new GameStateImpl(players, board);
         gameEngine = new GameEngineImpl(gameState);
@@ -66,10 +67,10 @@ public class GameEngineImplTest {
         Player bankruptPlayer = new DefaultPlayer("Банкрот");
         bankruptPlayer.spendMoney(3000); // Баланс станет -500
 
-        List<Player> players = Arrays.asList(
+        ArrayList<Player> players = new ArrayList<>( Arrays.asList(
                 bankruptPlayer,
                 new DefaultPlayer("Богатый игрок")
-        );
+        ));
 
         GameState bankruptState = new GameStateImpl(players, board);
         GameEngine bankruptEngine = new GameEngineImpl(bankruptState);

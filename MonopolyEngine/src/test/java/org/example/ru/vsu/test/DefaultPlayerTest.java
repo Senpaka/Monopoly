@@ -1,7 +1,7 @@
 package org.example.ru.vsu.test;
 
 import org.example.ru.vsu.oop.engine.api.cell.Street;
-import org.example.ru.vsu.oop.engine.impl.cells.Property.StreetImpl;
+import org.example.ru.vsu.oop.engine.impl.cells.property.StreetImpl;
 import org.example.ru.vsu.oop.engine.impl.player.DefaultPlayer;
 import org.example.ru.vsu.oop.engine.model.enumObject.board.ColorGroup;
 import org.junit.jupiter.api.BeforeEach;

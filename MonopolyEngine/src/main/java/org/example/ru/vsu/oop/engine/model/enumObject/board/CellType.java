@@ -8,5 +8,6 @@ public enum CellType {
     RAILWAY,
     UTILITIES,
     SPECIAL_CELL,
-    RANDOM_EVENT
+    CHANCE,
+    COMMUNITY
 }

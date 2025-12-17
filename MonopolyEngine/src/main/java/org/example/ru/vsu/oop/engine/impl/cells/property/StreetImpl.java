@@ -1,4 +1,4 @@
-package org.example.ru.vsu.oop.engine.impl.cells.Property;
+package org.example.ru.vsu.oop.engine.impl.cells.property;
 
 import org.example.ru.vsu.oop.engine.api.cell.Street;
 import org.example.ru.vsu.oop.engine.api.game.GameEngine;
