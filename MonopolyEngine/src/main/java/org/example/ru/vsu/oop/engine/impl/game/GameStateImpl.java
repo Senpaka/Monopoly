@@ -79,12 +79,4 @@ public class GameStateImpl implements GameState {
     public Deck getCommunity() {
         return community;
     }
-
-
-//    @Override
-//    public RandomEvent drawRandomEvent() {
-//        RandomEvent event = randomEvents.poll();
-//        randomEvents.offer(event);
-//        return event;
-//    }
 }

@@ -6,5 +6,4 @@ public interface RandomEvent extends Event{
     /*
     Интерфейс для случайных ивентов (карточки)
      */
-    CellType getType();
 }

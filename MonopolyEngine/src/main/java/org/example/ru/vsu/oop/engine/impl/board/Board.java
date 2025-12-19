@@ -21,6 +21,10 @@ public class Board {
         return cells.get(position % cells.size());
     }
 
+    public List<Cell> getCells(){
+        return cells;
+    }
+
     public int getSize(){
         /*
         Возвращает размер поля

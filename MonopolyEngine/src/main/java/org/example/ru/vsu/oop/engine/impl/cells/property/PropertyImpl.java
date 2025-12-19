@@ -85,6 +85,18 @@ public abstract class PropertyImpl implements Property {
             player.spendMoney(rent);
             owner.addMoney(rent);
             System.out.println(player.getName() + " Платит игроку " + owner.getName() + "аренду равную " + rent);
+
+        }else if (owner == null){
+            System.out.println("Хотите приобрести" + name);
+            boolean isBuy = true; //Временно
+
+            if (isBuy && player.spendMoney(price)){
+                player.addProperty(this);
+                this.owner = player;
+                gameEngine.addMessage("Покупка совершена");
+            }else{
+                gameEngine.addMessage("Недостаточно средств");
+            }
         }
     }
 

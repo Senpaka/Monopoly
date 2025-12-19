@@ -3,6 +3,7 @@ package org.example.ru.vsu.oop.engine.model.events.staticEvents;
 import org.example.ru.vsu.oop.engine.api.event.StaticEvent;
 import org.example.ru.vsu.oop.engine.api.game.GameEngine;
 import org.example.ru.vsu.oop.engine.api.player.Player;
+import org.example.ru.vsu.oop.engine.model.enumObject.board.CellType;
 import org.example.ru.vsu.oop.engine.model.enumObject.event.SpecialEffect;
 
 public class ReceiveMoneyEvent implements StaticEvent {
@@ -25,6 +26,11 @@ public class ReceiveMoneyEvent implements StaticEvent {
     @Override
     public String getDescription() {
         return "Получи" + this.amount + "денег";
+    }
+
+    @Override
+    public CellType getType() {
+        return CellType.SPECIAL_CELL;
     }
 
 //    @Override

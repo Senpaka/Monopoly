@@ -15,7 +15,7 @@ public class UtilitiesImpl extends PropertyImpl implements Utilities {
 
     @Override
     public int getRentPrice() {
-        return 0;
+        throw new IllegalArgumentException("Не указано кол-во шагов!");
     }
 
     @Override

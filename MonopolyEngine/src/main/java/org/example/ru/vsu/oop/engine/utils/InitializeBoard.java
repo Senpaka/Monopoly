@@ -1,7 +1,6 @@
 package org.example.ru.vsu.oop.engine.utils;
 
 import org.example.ru.vsu.oop.engine.api.cell.Cell;
-import org.example.ru.vsu.oop.engine.api.event.RandomEvent;
 import org.example.ru.vsu.oop.engine.impl.cells.eventCell.CardCellImpl;
 import org.example.ru.vsu.oop.engine.impl.cells.property.RailwayImpl;
 import org.example.ru.vsu.oop.engine.impl.cells.property.UtilitiesImpl;
@@ -9,8 +8,6 @@ import org.example.ru.vsu.oop.engine.impl.cells.eventCell.SpecialCellImpl;
 import org.example.ru.vsu.oop.engine.impl.cells.property.StreetImpl;
 import org.example.ru.vsu.oop.engine.model.enumObject.board.CellType;
 import org.example.ru.vsu.oop.engine.model.enumObject.board.ColorGroup;
-import org.example.ru.vsu.oop.engine.model.events.chance.GoToNCellChanceCard;
-import org.example.ru.vsu.oop.engine.model.events.communityChest.BirthdayComCard;
 import org.example.ru.vsu.oop.engine.model.events.staticEvents.GoToJailEvent;
 import org.example.ru.vsu.oop.engine.model.events.staticEvents.NoEffectEvent;
 import org.example.ru.vsu.oop.engine.model.events.staticEvents.PayMoneyEvent;

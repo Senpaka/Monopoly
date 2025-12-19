@@ -5,6 +5,7 @@ import org.example.ru.vsu.oop.engine.api.event.RandomEvent;
 import org.example.ru.vsu.oop.engine.api.game.GameEngine;
 import org.example.ru.vsu.oop.engine.api.game.GameState;
 import org.example.ru.vsu.oop.engine.api.player.Player;
+import org.example.ru.vsu.oop.engine.impl.board.Board;
 import org.example.ru.vsu.oop.engine.impl.player.DefaultPlayer;
 import org.example.ru.vsu.oop.engine.utils.DicePair;
 
@@ -48,13 +49,12 @@ public class GameEngineImpl implements GameEngine {
         int dice = dicePair.roll();
         System.out.println(player.getName() + " Бросает кубики и получает " + dice);
 
-        for (int i = 0; i < dice-1; i++) {
+        for (int i = 0; i < dice; i++) {
             movePlayer(player, 1);
             Cell cell = gameState.getBoard().getCell(player.getPosition());
             cell.onPass(player, this);
         }
 
-        movePlayer(player, 1);
         Cell cell = gameState.getBoard().getCell(player.getPosition());
         System.out.println(player.getName() + " Встал на клетку " + cell.getName());
         System.out.println("Она " + cell.getDescription());
@@ -120,15 +120,21 @@ public class GameEngineImpl implements GameEngine {
         return winner;
     }
 
+    @Override
     public List<Player> getPlayers(){
         return this.gameState.getPlayers();
     }
 
+    @Override
     public RandomEvent drawChance(){
         return gameState.getChance().drawCard();
     }
 
+    @Override
     public RandomEvent drawCommunity(){
         return gameState.getCommunity().drawCard();
     }
+
+    @Override
+    public Board getBoard() {return gameState.getBoard();}
 }

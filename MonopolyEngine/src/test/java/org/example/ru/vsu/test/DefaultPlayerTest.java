@@ -1,5 +1,6 @@
 package org.example.ru.vsu.test;
 
+import org.example.ru.vsu.oop.engine.api.cell.Property;
 import org.example.ru.vsu.oop.engine.api.cell.Street;
 import org.example.ru.vsu.oop.engine.impl.cells.property.StreetImpl;
 import org.example.ru.vsu.oop.engine.impl.player.DefaultPlayer;
@@ -29,7 +30,7 @@ public class DefaultPlayerTest {
 
     @Test
     void testCustomConstructor() {
-        List<Street> streets = new ArrayList<>();
+        List<Property> streets = new ArrayList<>();
         streets.add(new StreetImpl("Улица", "Описание", 1, 100, 50, 100, 10, ColorGroup.BROWN));
 
         DefaultPlayer customPlayer = new DefaultPlayer("Кастомный", 5, 1000, streets);

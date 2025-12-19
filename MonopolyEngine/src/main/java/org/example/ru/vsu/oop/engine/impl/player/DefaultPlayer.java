@@ -53,13 +53,13 @@ public class DefaultPlayer implements Player {
     }
 
     @Override
-    public void addStreet(Street street){
-        streets.add(street);
-        street.setOwner(this);
+    public void addProperty(Property property){
+        streets.add(property);
+        property.setOwner(this);
     }
 
     @Override
-    public List<Property> getStreets() {
+    public List<Property> getProperty() {
         /*
         Возвращает список улиц, которыми владеет игрок
          */
@@ -99,11 +99,15 @@ public class DefaultPlayer implements Player {
     }
 
     @Override
-    public int spendMoney(int amount) {
+    public boolean spendMoney(int amount) {
         /*
         Удаляет деньги
          */
-        return this.balance -= amount;
+        if (this.balance >= amount){
+            this.balance -= amount;
+            return true;
+        }
+        return false;
     }
 
     @Override
