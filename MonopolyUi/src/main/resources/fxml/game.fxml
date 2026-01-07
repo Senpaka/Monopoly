@@ -1,0 +1,42 @@
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.ui.GameFxController">
+
+    <!-- Верх: информация -->
+    <top>
+        <HBox spacing="20">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label fx:id="currentPlayerLabel" text="Текущий игрок"/>
+            <Label fx:id="diceLabel" text="Кубики: -"/>
+        </HBox>
+    </top>
+
+    <!-- Центр: поле -->
+    <center>
+        <Pane fx:id="boardPane"
+              prefWidth="600"
+              prefHeight="600"
+              style="-fx-background-color: lightgray"/>
+    </center>
+
+    <!-- Низ: кнопки -->
+    <bottom>
+        <HBox spacing="10" alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="🎲 Бросить кубики" onAction="#onRollDice"/>
+            <Button text="➡️ Шаг" onAction="#onStep"/>
+            <Button text="⏹ Конец хода" onAction="#onEndTurn"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

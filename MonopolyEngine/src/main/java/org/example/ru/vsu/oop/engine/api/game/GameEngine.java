@@ -22,4 +22,12 @@ public interface GameEngine {
     RandomEvent drawChance();
     RandomEvent drawCommunity();
     Board getBoard();
+    public void endTurn();
+    public void land();
+    public boolean hasMovesSteps();
+    public void moveStep();
+    public int rollDice();
+    public void setListener(GameListener listener);
+
+    Player getCurrentPlayer();
 }

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.ru.vsu.oop.engine.api.game;
 
 import org.example.ru.vsu.oop.engine.api.cell.Cell;
 import org.example.ru.vsu.oop.engine.api.player.Player;
@@ -9,7 +9,7 @@ public interface GameListener {
 
     void onGameStarted(List<Player> players);
 
-    void onTurnStarted(Player player);
+    void onTurnEnded(Player player);
 
     void onDiceRolled(Player player, int value);
 

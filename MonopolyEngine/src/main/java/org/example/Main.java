@@ -29,7 +29,6 @@ public class Main {
 
 
         ArrayList<Street> streets = new ArrayList<>();
-        List<Cell> cells = InitializeBoard.createSortedMonopolyBoard();
 
         Deque<RandomEvent> cardChance = new ArrayDeque<>(List.of(
                 new GoToNCellCard(0, "Отправляйтесь на поле «Вперед»"),
@@ -64,12 +63,8 @@ public class Main {
         Deck chance = new Deck(cardChance);
         Deck community = new Deck(cardCommunity);
 
-        for (int i = 0; i < cells.size(); i++) {
-            System.out.println(cells.get(i).getName());
-        }
-
         System.out.println(streets);
-        Board board = new Board(cells);
+        Board board = InitializeBoard.createSortedMonopolyBoard();
 
         ArrayList<Player> players = new ArrayList<>();
         DefaultPlayer player = new DefaultPlayer("sen");
