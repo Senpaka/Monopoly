@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+
+<BorderPane
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="ru.vsu.oop.controller.BuyPropertyController">
+
+    <center>
+        <VBox spacing="10" alignment="CENTER" prefWidth="300">
+            <Label fx:id="titleLabel" text="Купить улицу?" />
+            <Label fx:id="priceLabel" text="Цена: 100" />
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Купить" onAction="#onBuy"/>
+                <Button text="Отказаться" onAction="#onCancel"/>
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane>

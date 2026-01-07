@@ -9,7 +9,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.VBox?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.ui.GameFxController">
+            fx:controller="ru.vsu.oop.controller.GameFxController">
 
     <!-- Верх: информация -->
     <top>
