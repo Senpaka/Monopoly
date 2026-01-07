@@ -18,6 +18,7 @@ public class MonopolyFxApp extends Application {
 
         GameState gameState = GameFactory.createGameState();
         GameEngine engine = new GameEngineImpl(gameState);
+        System.out.println(engine);
 
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("/fxml/game.fxml")
