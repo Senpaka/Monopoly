@@ -28,6 +28,7 @@ public interface GameEngine {
     public void moveStep();
     public int rollDice();
     public void setListener(GameListener listener);
+    public int getMovesLeft();
 
     Player getCurrentPlayer();
 }

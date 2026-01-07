@@ -101,6 +101,10 @@ public class GameEngineImpl implements GameEngine {
         return movesLeft > 0;
     }
 
+    public int getMovesLeft(){
+        return movesLeft;
+    }
+
     public void land(){
         Player player = gameState.getCurrentPlayer();
         Cell cell = getBoard().getCell(player.getPosition());
