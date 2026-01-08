@@ -3,13 +3,18 @@ package ru.vsu.oop.controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -25,14 +30,14 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import ru.vsu.oop.ru.vsu.oop.engine.api.cell.Cell;
 import ru.vsu.oop.ru.vsu.oop.engine.api.cell.Property;
-import ru.vsu.oop.ru.vsu.oop.engine.api.cell.Street;
 import ru.vsu.oop.ru.vsu.oop.engine.api.game.GameEngine;
 import ru.vsu.oop.ru.vsu.oop.engine.api.game.GameListener;
 import ru.vsu.oop.ru.vsu.oop.engine.api.player.Player;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-import static ru.vsu.oop.utils.controllerUtils.getColorForCell;
+import static ru.vsu.oop.utils.controllerUtils.*;
 
 public class GameFxController implements GameListener {
 
@@ -53,9 +58,9 @@ public class GameFxController implements GameListener {
     @FXML
     private ScrollPane logScrollPane;
 
-    private static final double CELL_WIDTH = 60;
-    private static final double CELL_HEIGHT = 60;
-    private static final double BOARD_SIZE = CELL_HEIGHT * 11; // предполагаем квадратное поле
+    @FXML
+    private VBox playerPropertiesBox;
+
 
     private void drawBoard() {
         boardPane.getChildren().clear();
@@ -78,28 +83,26 @@ public class GameFxController implements GameListener {
             labelName.setFont(Font.font(10));
             labelName.setWrapText(true);
             labelName.setTextAlignment(TextAlignment.CENTER);
-            labelName.setAlignment(Pos.TOP_CENTER);         // текст в Label сверху
-            labelName.setMaxWidth(CELL_WIDTH - 4);          // ограничение ширины
-            StackPane.setAlignment(labelName, Pos.TOP_CENTER);  // Label размещаем в StackPane сверху
-            StackPane.setMargin(labelName, new Insets(CELL_HEIGHT * 0.2, 2, 0, 2)); // отступ сверху
+            labelName.setAlignment(Pos.TOP_CENTER);
+            labelName.setMaxWidth(CELL_WIDTH - 4);
+            StackPane.setAlignment(labelName, Pos.TOP_CENTER);
+            StackPane.setMargin(labelName, new Insets(CELL_HEIGHT * 0.2, 2, 0, 2));
 
             if (cell instanceof Property prop) {
                 Label labelPrice = new Label(Integer.toString(prop.getPrice()));
                 labelPrice.setFont(Font.font(10));
                 labelPrice.setWrapText(true);
                 labelPrice.setTextAlignment(TextAlignment.CENTER);
-                labelPrice.setAlignment(Pos.BOTTOM_CENTER);         // текст в Label сверху
-                labelPrice.setMaxWidth(CELL_WIDTH - 4);          // ограничение ширины
-                StackPane.setAlignment(labelPrice, Pos.BOTTOM_CENTER);  // Label размещаем в StackPane сверху
+                labelPrice.setAlignment(Pos.BOTTOM_CENTER);
+                labelPrice.setMaxWidth(CELL_WIDTH - 4);
+                StackPane.setAlignment(labelPrice, Pos.BOTTOM_CENTER);
                 StackPane.setMargin(labelPrice, new Insets(CELL_HEIGHT * 0.2, 2, 0, 2));
                 cellPane.getChildren().add(labelPrice);
             }
 
-// Добавляем всё в StackPane
             cellPane.getChildren().add(labelName);
             cellPane.setPrefSize(CELL_WIDTH, CELL_HEIGHT);
 
-// Размещаем на доске
             Point2D pos = getCellCoordinates(cell.getPosition());
             cellPane.setLayoutX(pos.getX());
             cellPane.setLayoutY(pos.getY());
@@ -108,33 +111,15 @@ public class GameFxController implements GameListener {
 
         }
 
-        // 4. Добавляем игроков
         drawPlayers();
     }
 
-    private Point2D getCellCoordinates(int position) {
-        double x = 0, y = 0;
-
-        if (position >= 0 && position <= 10) { // Верх
-            x = position * CELL_WIDTH;
-            y = 0;
-        } else if (position >= 11 && position <= 20) { // Правая
-            x = BOARD_SIZE - CELL_WIDTH;
-            y = (position - 10) * CELL_HEIGHT;
-        } else if (position >= 21 && position <= 30) { // Низ
-            x = BOARD_SIZE - (position - 20 + 1) * CELL_WIDTH;
-            y = BOARD_SIZE - CELL_HEIGHT;
-        } else if (position >= 31 && position < 40) { // Левая
-            x = 0;
-            y = BOARD_SIZE - (position - 30 + 1) * CELL_HEIGHT;
-        }
-
-        return new Point2D(x, y);
-    }
-
-
-
     private void drawPlayers() {
+        List<Node> playersToRemove = boardPane.getChildren().stream()
+                .filter(node -> node instanceof Circle)
+                .collect(Collectors.toList());
+        boardPane.getChildren().removeAll(playersToRemove);
+
         int offset = 0;
         for (Player player : gameEngine.getPlayers()) {
             Circle circle = new Circle(10);
@@ -163,10 +148,8 @@ public class GameFxController implements GameListener {
 
         for (int i = 1; i <= steps; i++) {
             KeyFrame keyFrame = new KeyFrame(Duration.seconds(i * 0.5), e -> {
-                // Двигаем игрока на 1 клетку
                 gameEngine.movePlayer(player, 1);
 
-                // Перерисовываем игроков
                 drawBoard();
             });
             timeline.getKeyFrames().add(keyFrame);
@@ -185,19 +168,6 @@ public class GameFxController implements GameListener {
         drawBoard(); // можно нарисовать поле после установки движка
     }
 
-    private void addLogMessage(String message) {
-        Platform.runLater(() -> {
-            Label label = new Label(message);
-            label.setWrapText(true);           // перенос по ширине
-            label.setFont(Font.font("Arial", 12));
-            logBox.getChildren().add(label);
-
-            // Автопрокрутка вниз
-            logScrollPane.layout();            // обновляем layout
-            logScrollPane.setVvalue(1.0);      // прокрутка в самый низ
-        });
-    }
-
     private void showBuyPropertyWindow(Player player, Property property) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BuyPropertyDialog.fxml"));
@@ -212,13 +182,47 @@ public class GameFxController implements GameListener {
                 } else {
                     log(player.getName() + " отказался от покупки " + property.getName());
                 }
-                drawPlayers();
+                drawBoard();
+                updatePlayerProperties();
             });
 
             Stage stage = new Stage();
             stage.setTitle("Покупка улицы");
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(pane));
+
+            Scene scene = new Scene(pane, 350, 250);
+            stage.setScene(scene);
+
+            stage.setResizable(false);
+
+            stage.initOwner(boardPane.getScene().getWindow());
+
+            stage.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showStreetInfo(Property property) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StreetInfoDialog.fxml"));
+            Parent pane = loader.load();
+
+            StreetInfoController controller = loader.getController();
+            controller.setData(property);
+
+            Stage stage = new Stage();
+            stage.setTitle(property.getName());
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            Scene scene = new Scene(pane, 350, 300);
+            stage.setScene(scene);
+
+            stage.setResizable(false);
+
+            stage.initOwner(boardPane.getScene().getWindow());
+
             stage.showAndWait();
 
         } catch (Exception e) {
@@ -227,11 +231,19 @@ public class GameFxController implements GameListener {
     }
 
 
+    private void updatePlayerProperties() {
+        Player current = gameEngine.getCurrentPlayer();
+        playerPropertiesBox.getChildren().clear();
+
+        for (Property property : current.getProperty()) {
+            Label propertyLabel = new Label(property.getName());
+            propertyLabel.setStyle("-fx-text-fill: lightgreen;");
+            propertyLabel.setOnMouseClicked(e -> showStreetInfo(property));
+            playerPropertiesBox.getChildren().add(propertyLabel);
+        }
+    }
 
 
-
-
-    // ===== КНОПКИ =====
 
     @FXML
     private void onMoveStepClicked() {
@@ -239,9 +251,8 @@ public class GameFxController implements GameListener {
         int moves = gameEngine.hasMovesSteps() ? gameEngine.getMovesLeft() : 0;
 
         animatePlayerMove(player, moves, () -> {
-            // После завершения анимации
-            gameEngine.land();        // вызываем событие на клетке
-            gameEngine.endTurn();     // заканчиваем ход
+            gameEngine.land();
+            gameEngine.endTurn();
         });
     }
 
@@ -252,11 +263,10 @@ public class GameFxController implements GameListener {
         int moves = gameEngine.hasMovesSteps() ? gameEngine.getMovesLeft() : 0;
 
         animatePlayerMove(player, moves, () -> {
-            // После завершения анимации
-            gameEngine.land();        // вызываем событие на клетке
-            gameEngine.endTurn();     // заканчиваем ход
+            gameEngine.land();
+            gameEngine.endTurn();
         });
-
+        drawBoard();
         drawPlayers();
     }
 
@@ -270,9 +280,9 @@ public class GameFxController implements GameListener {
     private void onEndTurn() {
         gameEngine.endTurn();
         drawPlayers();
+        updatePlayerProperties();
     }
 
-    // ===== LISTENER =====
 
     @Override
     public void onPropertyAvailable(Player player, Property property) {
@@ -282,13 +292,13 @@ public class GameFxController implements GameListener {
     @Override
     public void onDiceRolled(Player player, int value) {
         diceLabel.setText("Кубики: " + value);
-        addLogMessage(player.getName() + " бросил кубики и получил " + value);
+        log(player.getName() + " бросил кубики и получил " + value);
     }
 
     @Override
     public void onPlayerMoved(Player player, int position) {
         Cell cell = gameEngine.getBoard().getCell(position);
-        addLogMessage(player.getName() + " шагнул на клетку " + cell.getName());
+        log(player.getName() + " шагнул на клетку " + cell.getName());
     }
 
     @Override
@@ -325,8 +335,9 @@ public class GameFxController implements GameListener {
 
     @Override
     public void onTurnEnded(Player nextPlayer) {
-        addLogMessage("Ход закончился. Следующий игрок: " + nextPlayer.getName());
+        log("Ход закончился. Следующий игрок: " + nextPlayer.getName());
         updateCurrentPlayer();
+        updatePlayerProperties();
     }
 
     @Override
@@ -345,13 +356,15 @@ public class GameFxController implements GameListener {
     }
 
     private void log(String message) {
-        Label label = new Label(message);
-        label.setStyle("-fx-text-fill: white; -fx-font-size: 12px;");
-        logBox.getChildren().add(label);
+        Platform.runLater(() -> {
+            Label label = new Label(message);
+            label.setWrapText(true);
+            label.setFont(Font.font("Arial", 12));
+            logBox.getChildren().add(label);
 
-        // Прокрутка вниз
-        logScrollPane.layout();
-        logScrollPane.setVvalue(1.0);
+            logScrollPane.layout();
+            logScrollPane.setVvalue(1.0);
+        });
     }
 }
 

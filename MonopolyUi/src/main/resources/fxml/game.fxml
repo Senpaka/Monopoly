@@ -1,73 +1,100 @@
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
 
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.VBox?>
-<BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ru.vsu.oop.controller.GameFxController">
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.vsu.oop.controller.GameFxController"
+            style="-fx-background-color: #11111b;">
 
-    <!-- Верх: информация -->
+    <!-- Верхняя панель: информация -->
     <top>
-        <HBox spacing="20">
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
-            <Label fx:id="currentPlayerLabel" text="Текущий игрок"/>
-            <Label fx:id="diceLabel" text="Кубики: -"/>
+        <HBox spacing="30" alignment="CENTER_LEFT"
+              style="-fx-background-color: #181825; -fx-padding: 15 20;">
+            <Label fx:id="currentPlayerLabel" text="Текущий игрок"
+                   style="-fx-text-fill: #cdd6f4; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <Label fx:id="diceLabel" text="🎲 Кубики: -"
+                   style="-fx-text-fill: #f2cdcd; -fx-font-size: 16px;"/>
         </HBox>
     </top>
 
-    <!-- Центр: поле -->
+    <!-- Центральная часть: игровое поле -->
     <center>
-        <StackPane maxHeight="660" maxWidth="660">
-
+        <StackPane>
+            <!-- Игровое поле -->
             <Pane fx:id="boardPane"
-                  prefWidth="660"
-                  prefHeight="660"
-                  style="-fx-background-color: rgba(60, 61, 64, 0.5); -fx-border-color: black"/>
+                  prefWidth="660" prefHeight="660"
+                  style="-fx-background-color: #181825;
+                         -fx-border-color: #313244; -fx-border-width: 2;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 20, 0, 0, 5);"/>
 
-            <ScrollPane fx:id="logScrollPane"
-                prefWidth="542" prefHeight= "540"
-                maxWidth="542" maxHeight="540"
-                style="-fx-background-color: transparent;
-                -fx-background: transparent;">
-
-            <fitToWidth>true</fitToWidth>
-            <fitToHeight>true</fitToHeight>
-            <hbarPolicy>NEVER</hbarPolicy>
-
-
-            <content>
-                <VBox fx:id="logBox" spacing="3"
-                    style="-fx-background-color: rgba(30, 30, 30, 0.85);
-                    -fx-border-color: rgba(255, 255, 255, 0.15);">
-
-                    <Label text="📝 Ход игры"
-                        style="-fx-text-fill: white;
-                               -fx-font-weight: bold;
-                               -fx-font-size: 12px;
-                               -fx-padding: 0 0 5 0;"/>
-                </VBox>
-            </content>
-            </ScrollPane>
-
+            <!-- Панель логов - позиционируем в углу -->
+            <VBox alignment="TOP_RIGHT" spacing="5"
+                  style="-fx-background-color: transparent; -fx-padding: 10;">
+                <ScrollPane fx:id="logScrollPane"
+                           fitToWidth="true"
+                           fitToHeight="true"
+                           hbarPolicy="NEVER"
+                           vbarPolicy="AS_NEEDED"
+                           prefWidth="250"
+                           prefHeight="700"
+                           maxWidth="250"
+                           maxHeight="700"
+                           style="-fx-background: transparent;
+                                  -fx-background-color: transparent;">
+                    <content>
+                        <VBox fx:id="logBox" spacing="5"
+                              style="-fx-background-color: rgba(24, 24, 37, 0.95);
+                                     -fx-background-radius: 8;
+                                     -fx-padding: 10;
+                                     -fx-border-color: #89b4fa;
+                                     -fx-border-width: 1;
+                                     -fx-border-radius: 8;">
+                            <Label text="📖 История ходов"
+                                   style="-fx-text-fill: #89b4fa; -fx-font-weight: bold;
+                                          -fx-font-size: 12px; -fx-padding: 0 0 5 0;"/>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+            </VBox>
         </StackPane>
     </center>
 
-    <!-- Низ: кнопки -->
+    <!-- Правая панель: имущество игрока -->
+    <right>
+        <VBox fx:id="rightPanel" spacing="10"
+              style="-fx-background-color: #181825;
+                     -fx-border-color: #313244;
+                     -fx-border-width: 0 0 0 2;
+                     -fx-padding: 15;">
+
+            <!-- Заголовок (постоянный) -->
+            <Label fx:id="propertiesTitle" text="🏘️ Собственность игрока"
+                   style="-fx-text-fill: #cdd6f4; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+
+            <!-- Контейнер для улиц (динамический) -->
+            <VBox fx:id="playerPropertiesBox" spacing="5"/>
+
+        </VBox>
+    </right>
+
+    <!-- Нижняя панель: управление -->
     <bottom>
-        <HBox spacing="10" alignment="CENTER">
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
-            <Button text="🎲 Бросить кубики" onAction="#onRollDice"/>
-            <Button text="➡️ Шаг" onAction="#onStep"/>
-            <Button text="⏹ Конец хода" onAction="#onEndTurn"/>
+        <HBox spacing="20" alignment="CENTER"
+              style="-fx-background-color: #181825; -fx-padding: 15;">
+            <Button text="🎲 Бросить кубики" onAction="#onRollDice"
+                    style="-fx-background-color: linear-gradient(to right, #f5c2e7, #cba6f7);
+                           -fx-text-fill: #11111b; -fx-font-weight: bold;
+                           -fx-padding: 12 25; -fx-font-size: 14px;"/>
+            <Button text="➡️ Сделать ход" onAction="#onStep"
+                    style="-fx-background-color: linear-gradient(to right, #89b4fa, #74c7ec);
+                           -fx-text-fill: #11111b; -fx-font-weight: bold;
+                           -fx-padding: 12 25; -fx-font-size: 14px;"/>
+            <Button text="⏹️ Завершить ход" onAction="#onEndTurn"
+                    style="-fx-background-color: #313244;
+                           -fx-text-fill: #cdd6f4; -fx-padding: 12 25; -fx-font-size: 14px;"/>
         </HBox>
     </bottom>
 

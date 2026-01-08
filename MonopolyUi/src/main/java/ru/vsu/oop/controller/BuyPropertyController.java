@@ -31,7 +31,6 @@ public class BuyPropertyController {
         priceLabel.setText("Цена: " + property.getPrice());
     }
 
-    // 🔴 ОБЯЗАТЕЛЬНО public
     @FXML
     public void onBuy() {
         boolean success = player.spendMoney(property.getPrice());
@@ -41,7 +40,6 @@ public class BuyPropertyController {
         }
     }
 
-    // 🔴 ОБЯЗАТЕЛЬНО public
     @FXML
     public void onCancel() {
         callback.accept(false);
