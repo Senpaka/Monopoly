@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.vsu.oop.controller.BuyPropertyController"
+            style="-fx-background-color: #1e1e2e;">
+
+    <center>
+        <VBox spacing="20" alignment="CENTER" prefWidth="320" style="-fx-padding: 30;">
+            <Label fx:id="titleLabel" text="Приобрести участок?"
+                   style="-fx-text-fill: #cdd6f4; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+            <VBox spacing="8" alignment="CENTER">
+                <Label text="Цена:" style="-fx-text-fill: #bac2de; -fx-font-size: 14px;"/>
+                <Label fx:id="priceLabel" text="100"
+                       style="-fx-text-fill: #a6e3a1; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+            </VBox>
+
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="Купить" onAction="#onBuy"
+                        style="-fx-background-color: linear-gradient(to right, #89b4fa, #74c7ec);
+                               -fx-text-fill: #11111b; -fx-font-weight: bold; -fx-padding: 10 25;"/>
+                <Button text="Отказаться" onAction="#onCancel"
+                        style="-fx-background-color: #313244;
+                               -fx-text-fill: #cdd6f4; -fx-padding: 10 20;"/>
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane>

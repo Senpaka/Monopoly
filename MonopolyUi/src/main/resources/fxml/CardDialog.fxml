@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.vsu.oop.controller.CardDialogController"
+            style="-fx-background-color: #1e1e2e;">
+
+    <center>
+        <VBox spacing="20" alignment="CENTER" prefWidth="400" style="-fx-padding: 30;">
+            <Label text="🎴" style="-fx-font-size: 48px;"/>
+            
+            <Label fx:id="titleLabel" text="Шанс"
+                   style="-fx-text-fill: #cdd6f4; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+            <VBox spacing="8" alignment="CENTER" style="-fx-padding: 15;">
+                <Label fx:id="descriptionLabel" text="Описание карты"
+                       style="-fx-text-fill: #bac2de; -fx-font-size: 16px; -fx-wrap-text: true; -fx-text-alignment: center;"
+                       maxWidth="350"/>
+            </VBox>
+
+            <Button text="ОК" fx:id="okButton" onAction="#onOk"
+                    style="-fx-background-color: linear-gradient(to right, #89b4fa, #74c7ec);
+                           -fx-text-fill: #11111b; -fx-font-weight: bold; -fx-padding: 12 40; -fx-font-size: 16px;"/>
+        </VBox>
+    </center>
+
+</BorderPane>
