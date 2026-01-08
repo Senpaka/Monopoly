@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.controller.GameFxController"
+            style="-fx-background-color: #11111b;">
+
+    <top>
+        <HBox spacing="30" alignment="CENTER_LEFT"
+              style="-fx-background-color: #181825; -fx-padding: 15 20;">
+            <Label fx:id="currentPlayerLabel" text="Текущий игрок"
+                   style="-fx-text-fill: #cdd6f4; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <Label fx:id="playerBalanceLabel" text="💰 Баланс: -"
+               style="-fx-text-fill: #f2cdcd; -fx-font-size: 16px;"/>
+            <Label fx:id="diceLabel" text="🎲 Кубики: -"
+                   style="-fx-text-fill: #f2cdcd; -fx-font-size: 16px;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <StackPane>
+            <Pane fx:id="boardPane"
+                  prefWidth="660" prefHeight="660"
+                  style="-fx-background-color: #181825;
+                         -fx-border-color: #313244; -fx-border-width: 2;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 20, 0, 0, 5);"/>
+
+            <VBox alignment="TOP_RIGHT" spacing="5"
+                  style="-fx-background-color: transparent; -fx-padding: 10;">
+                <ScrollPane fx:id="logScrollPane"
+                           fitToWidth="true"
+                           fitToHeight="true"
+                           hbarPolicy="NEVER"
+                           vbarPolicy="AS_NEEDED"
+                           prefWidth="250"
+                           prefHeight="700"
+                           maxWidth="250"
+                           maxHeight="700"
+                           style="-fx-background: transparent;
+                                  -fx-background-color: transparent;">
+                    <content>
+                        <VBox fx:id="logBox" spacing="5"
+                              style="-fx-background-color: rgba(24, 24, 37, 0.95);
+                                     -fx-background-radius: 8;
+                                     -fx-padding: 10;
+                                     -fx-border-color: #89b4fa;
+                                     -fx-border-width: 1;
+                                     -fx-border-radius: 8;">
+                            <Label text="📖 История ходов"
+                                   style="-fx-text-fill: #89b4fa; -fx-font-weight: bold;
+                                          -fx-font-size: 12px; -fx-padding: 0 0 5 0;"/>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+            </VBox>
+        </StackPane>
+    </center>
+
+    <right>
+        <VBox fx:id="rightPanel" spacing="10"
+              style="-fx-background-color: #181825;
+                     -fx-border-color: #313244;
+                     -fx-border-width: 0 0 0 2;
+                     -fx-padding: 15;">
+
+            <Label fx:id="propertiesTitle" text="🏘️ Собственность игрока"
+                   style="-fx-text-fill: #cdd6f4; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+
+            <VBox fx:id="playerPropertiesBox" spacing="5"/>
+
+        </VBox>
+    </right>
+
+    <bottom>
+        <HBox spacing="20" alignment="CENTER"
+              style="-fx-background-color: #181825; -fx-padding: 15;">
+            <Button fx:id="rollDiceButton" text="🎲 Бросить кубики" onAction="#onRollDice"
+                    style="-fx-background-color: linear-gradient(to right, #f5c2e7, #cba6f7);
+                           -fx-text-fill: #11111b; -fx-font-weight: bold;
+                           -fx-padding: 12 25; -fx-font-size: 14px;"/>
+
+            <Button fx:id="endTurnButton" text="⏹️ Завершить ход" onAction="#onEndTurn"
+                    style="-fx-background-color: #313244;
+                           -fx-text-fill: #cdd6f4; -fx-padding: 12 25; -fx-font-size: 14px;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

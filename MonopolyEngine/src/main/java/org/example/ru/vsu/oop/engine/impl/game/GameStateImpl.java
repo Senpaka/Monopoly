@@ -1,12 +1,11 @@
 package org.example.ru.vsu.oop.engine.impl.game;
 
-import org.example.ru.vsu.oop.engine.api.event.RandomEvent;
 import org.example.ru.vsu.oop.engine.api.game.GameState;
 import org.example.ru.vsu.oop.engine.api.player.Player;
 import org.example.ru.vsu.oop.engine.impl.board.Board;
+import org.example.ru.vsu.oop.engine.utils.Deck;
 
 import java.util.List;
-import java.util.Queue;
 
 public class GameStateImpl implements GameState {
     /*
@@ -15,12 +14,25 @@ public class GameStateImpl implements GameState {
     private List<Player> players;
     private int currentPlayerIndex;
     private Board board;
-//    private Queue<RandomEvent> randomEvents;
+    private Deck chance;
+    private Deck community;
 
-    public GameStateImpl(List<Player> players, Board board) { //, Queue<RandomEvent> randomEvents
+    public GameStateImpl(List<Player> players, Board board, Deck chance, Deck community) {
+
+        if (players == null || players.isEmpty()) {
+            throw new IllegalArgumentException("Список игроков не может быть пустым");
+        }
+        if (board == null) {
+            throw new IllegalArgumentException("Игровое поле не может быть null");
+        }
+
         this.players = players;
         this.board = board;
-        //this.randomEvents = randomEvents;
+        this.community = community;
+        this.chance = chance;
+
+        if (chance != null) chance.shuffle();
+        if (community != null) community.shuffle();
     }
 
     @Override
@@ -55,10 +67,13 @@ public class GameStateImpl implements GameState {
         return board;
     }
 
-//    @Override
-//    public RandomEvent drawRandomEvent() {
-//        RandomEvent event = randomEvents.poll();
-//        randomEvents.offer(event);
-//        return event;
-//    }
+    @Override
+    public Deck getChance() {
+        return chance;
+    }
+
+    @Override
+    public Deck getCommunity() {
+        return community;
+    }
 }
