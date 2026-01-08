@@ -6,7 +6,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="ru.vsu.oop.controller.BuyPropertyController"
+            fx:controller="org.example.controller.BuyPropertyController"
             style="-fx-background-color: #1e1e2e;">
 
     <center>
