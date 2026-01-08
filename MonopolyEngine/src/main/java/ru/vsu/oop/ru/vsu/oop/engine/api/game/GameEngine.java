@@ -1,9 +1,11 @@
 package ru.vsu.oop.ru.vsu.oop.engine.api.game;
 
 import ru.vsu.oop.ru.vsu.oop.engine.api.cell.Cell;
+import ru.vsu.oop.ru.vsu.oop.engine.api.event.Event;
 import ru.vsu.oop.ru.vsu.oop.engine.api.event.RandomEvent;
 import ru.vsu.oop.ru.vsu.oop.engine.api.player.Player;
 import ru.vsu.oop.ru.vsu.oop.engine.impl.board.Board;
+import ru.vsu.oop.ru.vsu.oop.engine.model.enumObject.board.CellType;
 
 import java.util.List;
 
@@ -30,7 +32,10 @@ public interface GameEngine {
     public int rollDice();
     public void setListener(GameListener listener);
     public int getMovesLeft();
+    RandomEvent drawRandomEvent(CellType cellType);
+    GameListener getListener();
     public void onCellLanded(Player player, Cell cell);
+    public void onCardDrawn(Player player, Event event);
 
         Player getCurrentPlayer();
 }

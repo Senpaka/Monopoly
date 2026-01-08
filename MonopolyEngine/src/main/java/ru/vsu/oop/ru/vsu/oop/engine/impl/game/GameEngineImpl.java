@@ -2,12 +2,14 @@ package ru.vsu.oop.ru.vsu.oop.engine.impl.game;
 
 import ru.vsu.oop.ru.vsu.oop.engine.api.cell.Cell;
 import ru.vsu.oop.ru.vsu.oop.engine.api.cell.Property;
+import ru.vsu.oop.ru.vsu.oop.engine.api.event.Event;
 import ru.vsu.oop.ru.vsu.oop.engine.api.event.RandomEvent;
 import ru.vsu.oop.ru.vsu.oop.engine.api.game.GameEngine;
 import ru.vsu.oop.ru.vsu.oop.engine.api.game.GameListener;
 import ru.vsu.oop.ru.vsu.oop.engine.api.game.GameState;
 import ru.vsu.oop.ru.vsu.oop.engine.api.player.Player;
 import ru.vsu.oop.ru.vsu.oop.engine.impl.board.Board;
+import ru.vsu.oop.ru.vsu.oop.engine.model.enumObject.board.CellType;
 import ru.vsu.oop.ru.vsu.oop.engine.utils.DicePair;
 
 import java.util.List;
@@ -23,6 +25,7 @@ public class GameEngineImpl implements GameEngine {
     private GameListener listener;
     private int movesLeft = 0;
     DicePair dicePair;
+    private Event pendingEvent;
 
     public GameEngineImpl(GameState gameState) {
         this.gameState = gameState;
@@ -81,6 +84,13 @@ public class GameEngineImpl implements GameEngine {
         return movesLeft;
     }
 
+    public void confirmCard() {
+        if (pendingEvent == null) return;
+
+        pendingEvent.apply(gameState.getCurrentPlayer(), this);
+        pendingEvent = null;
+    }
+
     public void moveStep(){
         if (movesLeft <= 0){
             return;
@@ -113,20 +123,14 @@ public class GameEngineImpl implements GameEngine {
         listener.onMessage(player.getName() + " встал на " + cell.getName());
         listener.onCellLanded(player, cell);
 
-        // Логика cell
         cell.onLand(player, this);
 
-        // Если клетка свободна и это Property — UI должен показать окно покупки
-//        if (cell instanceof Property property && !property.hasOwner()) {
-//            listener.onPropertyAvailable(player, property);
-//        }
     }
 
     @Override
     public void onCellLanded(Player player, Cell cell) {
         if (cell instanceof Property property) {
             if (!property.hasOwner()) {
-                // Движок сообщает, что есть доступная покупка
                 listener.onPropertyAvailable(player, property);
             } else if (property.getOwner() != player) {
                 log(player.getName() + " платит аренду " + property.getOwner().getName());
@@ -205,6 +209,25 @@ public class GameEngineImpl implements GameEngine {
     @Override
     public RandomEvent drawChance(){
         return gameState.getChance().drawCard();
+    }
+
+    @Override
+    public RandomEvent drawRandomEvent(CellType cellType) {
+        if (cellType == CellType.CHANCE) {
+            return drawChance();
+        } else if (cellType == CellType.COMMUNITY) {
+            return drawCommunity();
+        }
+        return null;
+    }
+
+    public void onCardDrawn(Player player, Event event) {
+        this.pendingEvent = event;
+        listener.onCardDrawn(player, event);
+    }
+    @Override
+    public GameListener getListener() {
+        return listener;
     }
 
     @Override

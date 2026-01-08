@@ -1,5 +1,6 @@
 package ru.vsu.oop.ru.vsu.oop.engine.impl.cells.eventCell;
 
+import ru.vsu.oop.ru.vsu.oop.engine.api.event.Event;
 import ru.vsu.oop.ru.vsu.oop.engine.api.event.RandomEvent;
 import ru.vsu.oop.ru.vsu.oop.engine.api.game.GameEngine;
 import ru.vsu.oop.ru.vsu.oop.engine.api.player.Player;
@@ -27,20 +28,13 @@ public class CardCellImpl extends EventCellImpl{
 
     @Override
     public void onLand(Player player, GameEngine gameEngine) {
-        if (cellType == CellType.COMMUNITY){
-            this.event = gameEngine.drawCommunity();
-            gameEngine.addMessage("Вытянута карта общественная казна");
-        }else{
-            this.event = gameEngine.drawChance();
-            gameEngine.addMessage("Вытянута карта шанс");
+        Event event = gameEngine.drawRandomEvent(cellType);
+
+        if (event == null) {
+            throw new IllegalStateException("Колода пуста");
         }
 
-        if (event != null){
-            applyEffect(player, gameEngine);
-            this.event = null;
-        }else{
-            throw new NullPointerException("Колода пуста, либо содержит Null значения");
-        }
+        gameEngine.onCardDrawn(player, event);
     }
 
     @Override

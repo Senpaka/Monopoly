@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import ru.vsu.oop.ru.vsu.oop.engine.api.cell.*;
 import ru.vsu.oop.ru.vsu.oop.engine.model.enumObject.board.CellType;
 public class controllerUtils {
-    public static final double CELL_WIDTH = 60; // Немного больше для красоты
+    public static final double CELL_WIDTH = 60;
     public static final double CELL_HEIGHT = 60;
     public static final double BOARD_SIZE = CELL_HEIGHT * 11;
 
