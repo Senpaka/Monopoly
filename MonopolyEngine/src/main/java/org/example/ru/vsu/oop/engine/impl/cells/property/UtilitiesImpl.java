@@ -1,9 +1,12 @@
 package org.example.ru.vsu.oop.engine.impl.cells.property;
 
+import org.example.ru.vsu.oop.engine.api.cell.Property;
 import org.example.ru.vsu.oop.engine.api.cell.Utilities;
 import org.example.ru.vsu.oop.engine.api.game.GameEngine;
 import org.example.ru.vsu.oop.engine.api.player.Player;
 import org.example.ru.vsu.oop.engine.model.enumObject.board.CellType;
+
+import java.util.List;
 
 public class UtilitiesImpl extends PropertyImpl implements Utilities {
     private final int ONE_UTILITIES_MULTIPLY = 4;
@@ -26,6 +29,20 @@ public class UtilitiesImpl extends PropertyImpl implements Utilities {
         }
 
         return steps * TWO_UTILITIES_MULTIPLY;
+    }
+
+    @Override
+    public int getMultiply(Player player) {
+        List<Property> properties = player.getProperty();
+        int cnt = 0;
+
+        for(Property property: properties){
+            if (property instanceof Utilities){
+                cnt += 1;
+            }
+        }
+
+        return cnt == 2 ? TWO_UTILITIES_MULTIPLY : ONE_UTILITIES_MULTIPLY;
     }
 
     @Override

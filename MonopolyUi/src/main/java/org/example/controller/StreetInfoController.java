@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.example.ru.vsu.oop.engine.api.cell.Property;
 import org.example.ru.vsu.oop.engine.api.cell.Street;
+import org.example.ru.vsu.oop.engine.api.cell.Utilities;
 import org.example.ru.vsu.oop.engine.api.game.GameEngine;
 import org.example.ru.vsu.oop.engine.api.player.Player;
 import org.example.ru.vsu.oop.engine.model.enumObject.board.ColorGroup;
@@ -56,9 +57,14 @@ public class StreetInfoController {
         this.gameEngine = gameEngine;
         this.onUpdateCallback = onUpdateCallback;
 
+        if (property instanceof Utilities utilities){
+            rentLabel.setText("Кол-во ходов * " + utilities.getMultiply(player));
+        }else{
+            rentLabel.setText(String.valueOf(property.getRentPrice()));
+        }
+
         nameLabel.setText(property.getName());
         priceLabel.setText(String.valueOf(property.getPrice()));
-        rentLabel.setText(String.valueOf(property.getRentPrice()));
         ownerLabel.setText(property.hasOwner() ? property.getOwner().getName() : "Нет");
 
         if (property instanceof Street street) {

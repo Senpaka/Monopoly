@@ -177,7 +177,7 @@ public class InitializeBoard {
                 new PayMoneyCard(50, "Оплата гонорара врачу. Заплатите 50 ₽"),
                 new PayMoneyCard(100, "Оплата больничного счета. Заплатите 100 ₽."),
                 new ReceiveMoneyCard(100, "Вы получили наследство. Получите 100 ₽."),
-                new ReceiveMoneyCard(50, "Заплатите за обучение 50 ₽."),
+                new PayMoneyCard(50, "Заплатите за обучение 50 ₽."),
                 new ReceiveMoneyCard(50, "Вы продали акции. Получите 50 ₽."),
                 new PayMoneyCard(100, "Оплата штрафа за превышение скорости. Заплатите 100 ₽."),
                 new PayMoneyCard(150, "Вас обманули во время продажи имущества. Заплатите 150")

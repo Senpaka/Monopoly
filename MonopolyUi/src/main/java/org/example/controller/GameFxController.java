@@ -76,7 +76,6 @@ public class GameFxController implements GameListener {
     @FXML
     private Button rollDiceButton;
 
-
     @FXML
     private Button endTurnButton;
 
@@ -542,9 +541,9 @@ public class GameFxController implements GameListener {
 
     @Override
     public void onCellPassed(Player player, Cell cell) {
-        // Логируем прохождение через старт
         if (cell.getPosition() == 0) {
             log("🎁 " + player.getName() + " прошел через старт и получил 200 ₽");
+            updatePlayerBalance(player);
         }
     }
 
@@ -577,6 +576,7 @@ public class GameFxController implements GameListener {
         } else {
             log("ℹ️ " + cell.getDescription());
         }
+        updatePlayerBalance(player);
     }
 
     @Override
